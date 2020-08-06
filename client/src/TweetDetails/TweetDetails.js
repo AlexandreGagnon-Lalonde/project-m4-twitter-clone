@@ -6,8 +6,18 @@ import {
   Link
 } from "react-router-dom";
 
+import styled from 'styled-components';
+import Sidebar from '../Sidebar/Sidebar';
+
 const TweetDetails = () => {
-  return <div>TweetDetails</div>;
+  return <Wrapper>
+    <Sidebar></Sidebar>
+    <div>TweetDetails</div>
+  </Wrapper>;
 };
+
+const Wrapper = styled.div`
+  display: flex;
+`
 
 export default TweetDetails
