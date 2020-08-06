@@ -1,36 +1,32 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, NavLink, Link } from "react-router-dom";
 
-import styled from 'styled-components';
-import SidebarBookmark from './SidebarBookmark';
-import SidebarNotifications from './SidebarNotifications';
-import SidebarProfile from './SidebarProfile';
-import SidebarHomeFeed from './SidebarHomeFeed';
-import Logo from '../assets/logo.svg';
+import styled from "styled-components";
+import SidebarBookmark from "./SidebarBookmark";
+import SidebarNotifications from "./SidebarNotifications";
+import SidebarProfile from "./SidebarProfile";
+import SidebarHomeFeed from "./SidebarHomeFeed";
+import Logo from "../assets/logo.svg";
+import { COLORS } from '../constants';
 
 const Sidebar = () => {
-  return <div>
+  return (
     <Wrapper>
-      <Link to={'/'}><CritterLogo src={Logo} alt='Critter Logo'></CritterLogo></Link>
-      <Link to={'/'}><SidebarHomeFeed></SidebarHomeFeed></Link>
-      <Link to={'/:profileId'}><SidebarProfile></SidebarProfile></Link>
-      <Link to={'/notifications'}><SidebarNotifications></SidebarNotifications></Link>
-      <Link to={'/bookmarks'}><SidebarBookmark></SidebarBookmark></Link>
+      <Link to={"/"}>
+        <img src={Logo} alt="Critter Logo"></img>
+      </Link>
+        <SidebarHomeFeed></SidebarHomeFeed>
+        <SidebarProfile></SidebarProfile>
+        <SidebarNotifications></SidebarNotifications>
+        <SidebarBookmark></SidebarBookmark>
     </Wrapper>
-  </div>;
+  );
 };
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-`
-const CritterLogo = styled.img`
+  margin: 30px 50px 0 50px;
+`;
 
-`
-
-export default Sidebar
+export default Sidebar;
