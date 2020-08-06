@@ -5,9 +5,18 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import styled from 'styled-components';
+
+import Sidebar from '../Sidebar/Sidebar';
 
 const Profile = () => {
-  return <div>Profile</div>;
+  return <Wrapper>
+    <Sidebar></Sidebar>
+    <div>Profile</div>
+  </Wrapper>;
 };
+const Wrapper = styled.div`
+  display: flex;
+`
 
 export default Profile

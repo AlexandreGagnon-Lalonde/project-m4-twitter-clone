@@ -16,11 +16,11 @@ import Logo from '../assets/logo.svg';
 const Sidebar = () => {
   return <div>
     <Wrapper>
-      <CritterLogo src={Logo} alt='Critter Logo'></CritterLogo>
-      <SidebarHomeFeed></SidebarHomeFeed>
-      <SidebarProfile></SidebarProfile>
-      <SidebarNotifications></SidebarNotifications>
-      <SidebarBookmark></SidebarBookmark>
+      <Link to={'/'}><CritterLogo src={Logo} alt='Critter Logo'></CritterLogo></Link>
+      <Link to={'/'}><SidebarHomeFeed></SidebarHomeFeed></Link>
+      <Link to={'/:profileId'}><SidebarProfile></SidebarProfile></Link>
+      <Link to={'/notifications'}><SidebarNotifications></SidebarNotifications></Link>
+      <Link to={'/bookmarks'}><SidebarBookmark></SidebarBookmark></Link>
     </Wrapper>
   </div>;
 };

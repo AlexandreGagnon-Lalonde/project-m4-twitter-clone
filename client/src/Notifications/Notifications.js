@@ -5,9 +5,18 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import styled from 'styled-components';
+
+import Sidebar from '../Sidebar/Sidebar';
 
 const Notifications = () => {
-  return <div>Notifications</div>;
+  return <Wrapper>
+    <Sidebar></Sidebar>
+    <div>Notifications</div>
+  </Wrapper>;
 };
+const Wrapper = styled.div`
+  display: flex;
+`
 
 export default Notifications

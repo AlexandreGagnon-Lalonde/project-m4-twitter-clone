@@ -4,10 +4,18 @@ import {
   Switch,
   Route,
   Link
-} from "react-router-dom";
+} from "react-router-dom";import styled from 'styled-components';
+
+import Sidebar from '../Sidebar/Sidebar';
 
 const HomeFeed = () => {
-  return <div>HomeFeed</div>;
+  return <Wrapper>
+    <Sidebar></Sidebar>
+    <div>HomeFeed</div>
+  </Wrapper>;
 };
+const Wrapper = styled.div`
+  display: flex;
+`
 
 export default HomeFeed

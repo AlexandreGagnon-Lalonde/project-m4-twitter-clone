@@ -5,9 +5,17 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import styled from 'styled-components';
+import Sidebar from '../Sidebar/Sidebar';
 
 const Bookmarks = () => {
-  return <div>bookmarks</div>;
+  return <Wrapper>
+    <Sidebar></Sidebar>
+    <div>Bookmarks</div>
+  </Wrapper>;
 };
+const Wrapper = styled.div`
+  display: flex;
+`
 
 export default Bookmarks
