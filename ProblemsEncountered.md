@@ -9,3 +9,6 @@
 - this line should finish with Context and the actual body should be Provider
     export const CurrentUserContext = React.createContext(null);
 
+- trouble setting the currentUser context to the data fetched from route
+  - Why does the first render doesn't work while fetching the data from the user?
+  - why do we need a useEffect?

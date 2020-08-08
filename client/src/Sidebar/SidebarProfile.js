@@ -13,8 +13,6 @@ import { COLORS } from "../constants";
 import { CurrentUserContext } from "../CurrentUserContext";
 
 const SidebarProfile = () => {
-  const { currentUser } = React.useContext(CurrentUserContext);
-  console.log(currentUser)
   return (
     <NavigationLink to={"/:profileId"}>
       <RiUser3Line />
