@@ -13,8 +13,16 @@ import { COLORS } from "../constants";
 import { CurrentUserContext } from "../CurrentUserContext";
 
 const SidebarProfile = () => {
+  const { currentUser, status } = React.useContext(CurrentUserContext);
+let userHandle;
+  if (status === 'loading') {
+    userHandle = ':profileId';
+  } else {
+    userHandle = currentUser.profile.handle;
+  }
+
   return (
-    <NavigationLink to={"/:profileId"}>
+    <NavigationLink to={`/${userHandle}`}>
       <RiUser3Line />
       <Spacer>Profile</Spacer>
     </NavigationLink>

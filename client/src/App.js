@@ -13,7 +13,6 @@ import TweetDetails from "./TweetDetails/TweetDetails";
 import Profile from "./Profile/Profile";
 
 import GlobalStyles from "./GlobalStyles";
-import { IconName } from "react-icons/fi";
 
 const App = () => {
   return (
