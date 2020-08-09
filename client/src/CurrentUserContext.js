@@ -4,6 +4,8 @@ export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = React.useState(null);
   const [status, setStatus] = React.useState("loading");
   const [tweetFeed, setTweetFeed] = React.useState(null);
+  const [profileUser, setProfileUser] = React.useState(null);
+  const [homeFeed, setHomeFeed] = React.useState(null);
   // Fetch the user data from the API (/me/profile)
   // When the data is received, update currentUser.
   // Also, set `status` to `idle`
@@ -21,10 +23,15 @@ export const CurrentUserProvider = ({ children }) => {
               setTweetFeed(userFeed);
             })
             .catch((err) => console.log(err));
+          // fetch all the tweets for home feed
+          fetch('/api/me/home-feed')
+            .then(res => res.json())
+            .then(feed => {
+              setHomeFeed(feed);
+            })
         }
       })
       .catch((err) => console.log(err));
-    console.log("currentUser", currentUser);
   });
 
   return (
@@ -36,6 +43,8 @@ export const CurrentUserProvider = ({ children }) => {
         setStatus,
         tweetFeed,
         setTweetFeed,
+        homeFeed,
+        setHomeFeed,
       }}
     >
       {children}

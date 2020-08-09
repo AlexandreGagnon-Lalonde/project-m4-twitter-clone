@@ -6,19 +6,19 @@ import { CurrentUserContext } from "../CurrentUserContext";
 import { AiOutlineRetweet } from "react-icons/ai";
 const moment = require("moment");
 
-const TweetAuthor = (props) => {
-  const { tweetFeed, currentUser, homeFeed } = React.useContext(CurrentUserContext);
+const HomeTweetAuthor = (props) => {
+  const { homeFeed, currentUser} = React.useContext(CurrentUserContext);
   let currentUserDate = moment(new Date(currentUser.profile.joined)).format(
     "MMM Do"
   );
   let retweetUserDate = moment(
-    new Date(tweetFeed.tweetsById[props.tweetId].author.joined)
+    new Date(homeFeed.tweetsById[props.tweetId].author.joined)
   ).format("MMM Do");
-  if (tweetFeed.tweetsById[props.tweetId].retweetFrom) {
+  if (homeFeed.tweetsById[props.tweetId].retweetFrom) {
     return (
       <div>
-        {tweetFeed.tweetsById[props.tweetId].author.displayName} @
-        {tweetFeed.tweetsById[props.tweetId].author.handle} · Joined{" "}
+        {homeFeed.tweetsById[props.tweetId].author.displayName} @
+        {homeFeed.tweetsById[props.tweetId].author.handle} · Joined{" "}
         {retweetUserDate}
       </div>
     );
@@ -32,4 +32,4 @@ const TweetAuthor = (props) => {
   }
 };
 
-export default TweetAuthor;
+export default HomeTweetAuthor;

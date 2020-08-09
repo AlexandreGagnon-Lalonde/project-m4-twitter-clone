@@ -18,7 +18,7 @@ const ProfileFeed = () => {
       {tweetFeed
         ? tweetFeed.tweetIds.map((tweet) => {
             return (
-              <ProfileFeedContainer>
+              <ProfileFeedContainer key={tweet}>
                 <Retweet tweetId={tweet}></Retweet>
                 <TweetUserImage tweetId={tweet}></TweetUserImage>
                 <TweetAuthor tweetId={tweet}></TweetAuthor>

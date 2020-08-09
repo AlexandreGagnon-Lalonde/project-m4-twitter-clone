@@ -8,7 +8,7 @@ import { AiOutlineRetweet } from "react-icons/ai";
 import { FcLike } from "react-icons/fc";
 import { FiUpload } from "react-icons/fi";
 
-const TweetButtons = (props) => {
+const HomeTweetButton = (props) => {
   const { tweetFeed, currentUser } = React.useContext(CurrentUserContext);
 
   return (
@@ -27,4 +27,4 @@ const ButtonContainer = styled.div`
 const StyledButton = styled.button`
   flex: 1;
 `
-export default TweetButtons;
+export default HomeTweetButton;

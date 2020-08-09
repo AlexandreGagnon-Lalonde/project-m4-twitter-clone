@@ -7,9 +7,8 @@ import { CurrentUserContext } from "../CurrentUserContext";
 import MainProfileContent from "./MainProfileContent";
 
 const Profile = () => {
-  const { currentUser } = React.useContext(CurrentUserContext);
+  const { currentUser, setCurrentUser, status, setStatus, tweetFeed, setTweetFeed } = React.useContext(CurrentUserContext);
   console.log(currentUser);
-
   let temp;
   let userProfile;
 
@@ -34,7 +33,7 @@ const Profile = () => {
         userProfile = profileData;
       })
       .catch((err) => console.log(err));
-  }, [userProfile]);
+  });
 
   return (
     <Wrapper>
