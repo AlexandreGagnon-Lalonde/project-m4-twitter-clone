@@ -5,9 +5,9 @@ import styled from 'styled-components';
 import { CurrentUserContext } from "../CurrentUserContext";
 
 const ProfilePic = () => {
-  const { currentUser } = React.useContext(CurrentUserContext);
+  const { currentUser, profileUser } = React.useContext(CurrentUserContext);
 
-  return <ProfileImgContainer src={currentUser.profile.avatarSrc}></ProfileImgContainer>
+  return <ProfileImgContainer src={profileUser.profile.avatarSrc}></ProfileImgContainer>
 }
 
 const ProfileImgContainer = styled.img`

@@ -18,7 +18,7 @@ let userHandle;
   if (status === 'loading') {
     userHandle = ':profileId';
   } else {
-    userHandle = currentUser.profile.handle;
+    userHandle = currentUser.handle;
   }
 
   return (

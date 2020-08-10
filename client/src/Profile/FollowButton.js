@@ -6,7 +6,7 @@ import { CurrentUserContext } from "../CurrentUserContext";
 import { COLORS } from "../constants";
 
 const FollowButton = () => {
-  const { currentUser } = React.useContext(CurrentUserContext);
+  const { currentUser, profileUser } = React.useContext(CurrentUserContext);
 
   return <StyledButton>Follow</StyledButton>
 }

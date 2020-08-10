@@ -7,8 +7,8 @@ import { AiOutlineRetweet } from "react-icons/ai";
 const moment = require("moment");
 
 const TweetAuthor = (props) => {
-  const { tweetFeed, currentUser, homeFeed } = React.useContext(CurrentUserContext);
-  let currentUserDate = moment(new Date(currentUser.profile.joined)).format(
+  const { tweetFeed, currentUser, homeFeed, profileUser } = React.useContext(CurrentUserContext);
+  let profileUserDate = moment(new Date(profileUser.profile.joined)).format(
     "MMM Do"
   );
   let retweetUserDate = moment(
@@ -25,8 +25,8 @@ const TweetAuthor = (props) => {
   } else {
     return (
       <div>
-        {currentUser.profile.displayName} @{currentUser.profile.handle} · Joined{" "}
-        {currentUserDate}
+        {profileUser.profile.displayName} @{profileUser.profile.handle} · Joined{" "}
+        {profileUserDate}
       </div>
     );
   }

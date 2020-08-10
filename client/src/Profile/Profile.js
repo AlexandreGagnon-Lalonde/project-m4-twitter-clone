@@ -7,41 +7,53 @@ import { CurrentUserContext } from "../CurrentUserContext";
 import MainProfileContent from "./MainProfileContent";
 
 const Profile = () => {
-  const { currentUser, setCurrentUser, status, setStatus, tweetFeed, setTweetFeed } = React.useContext(CurrentUserContext);
-  console.log(currentUser);
+  const {
+    currentUser,
+    setCurrentUser,
+    status,
+    setStatus,
+    tweetFeed,
+    setTweetFeed,
+    profileUser,
+    setProfileUser,
+  } = React.useContext(CurrentUserContext);
   let temp;
   let userProfile;
 
-  if (currentUser) {
-    temp = currentUser.profile.displayName;
+  if (profileUser) {
+    temp = profileUser.profile.displayName;
   } else {
     temp = "Loading";
   }
 
-
   React.useEffect(() => {
     // grab user handle from the url
     let userHandle = window.location.pathname.substr(1);
-    if (userHandle === ':profileId') {
-      userHandle = 'treasurymog';
+    if (userHandle === ":profileId") {
+      userHandle = "treasurymog";
     }
-
 
     fetch(`/api/${userHandle}/profile`)
       .then((res) => res.json())
       .then((profileData) => {
-        userProfile = profileData;
+        setProfileUser(profileData);
+        fetch(`/api/${userHandle}/feed/`)
+          .then((res) => res.json())
+          .then((profileFeed) => {
+            setTweetFeed(profileFeed);
+          });
       })
       .catch((err) => console.log(err));
-  });
+  }, []);
 
   return (
     <Wrapper>
       <Sidebar></Sidebar>
-      {currentUser 
-          ? <MainProfileContent></MainProfileContent> 
-          : <div>{temp}</div>
-      }
+      {profileUser ? (
+        <MainProfileContent></MainProfileContent>
+      ) : (
+        <div>{temp}</div>
+      )}
     </Wrapper>
   );
 };

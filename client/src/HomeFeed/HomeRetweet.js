@@ -10,7 +10,7 @@ const HomeRetweer = (props) => {
   if (homeFeed.tweetsById[props.tweetId].retweetFrom) {
     return (
       <div>
-        <AiOutlineRetweet /> {currentUser.profile.displayName} Remeowed
+        <AiOutlineRetweet /> {currentUser.displayName} Remeowed
       </div>
     );
   } else {

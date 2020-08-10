@@ -6,13 +6,13 @@ import { CurrentUserContext } from "../CurrentUserContext";
 import { AiOutlineRetweet } from "react-icons/ai";
 
 const TweetUserImage = (props) => {
-  const { tweetFeed, currentUser } = React.useContext(CurrentUserContext);
+  const { tweetFeed, currentUser, profileUser } = React.useContext(CurrentUserContext);
   if (tweetFeed.tweetsById[props.tweetId].retweetFrom) {
     return (
       <StyledImage src={tweetFeed.tweetsById[props.tweetId].author.avatarSrc}></StyledImage>
     );
   } else {
-    return <StyledImage src={currentUser.profile.avatarSrc}></StyledImage>
+    return <StyledImage src={profileUser.profile.avatarSrc}></StyledImage>
   }
 }
 

@@ -12,7 +12,7 @@ const HomeTweetUserImage = (props) => {
       <StyledImage src={homeFeed.tweetsById[props.tweetId].author.avatarSrc}></StyledImage>
     );
   } else {
-    return <StyledImage src={currentUser.profile.avatarSrc}></StyledImage>
+    return <StyledImage src={currentUser.avatarSrc}></StyledImage>
   }
 }
 

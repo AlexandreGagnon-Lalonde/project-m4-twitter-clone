@@ -8,7 +8,7 @@ const moment = require("moment");
 
 const HomeTweetAuthor = (props) => {
   const { homeFeed, currentUser} = React.useContext(CurrentUserContext);
-  let currentUserDate = moment(new Date(currentUser.profile.joined)).format(
+  let currentUserDate = moment(new Date(currentUser.joined)).format(
     "MMM Do"
   );
   let retweetUserDate = moment(
@@ -25,7 +25,7 @@ const HomeTweetAuthor = (props) => {
   } else {
     return (
       <div>
-        {currentUser.profile.displayName} @{currentUser.profile.handle} · Joined{" "}
+        {currentUser.displayName} @{currentUser.handle} · Joined{" "}
         {currentUserDate}
       </div>
     );

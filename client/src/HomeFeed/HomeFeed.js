@@ -14,14 +14,13 @@ import { CurrentUserContext } from "../CurrentUserContext";
 
 const HomeFeed = () => {
   const { homeFeed, currentUser } = React.useContext(CurrentUserContext);
-  console.log(homeFeed);
   return (
     <Wrapper>
       <Sidebar></Sidebar>
       <div>
         <h1>Home</h1>
         <div>
-          <StyledUserImage src={currentUser ? currentUser.profile.avatarSrc : null}></StyledUserImage>
+          <StyledUserImage src={currentUser ? currentUser.avatarSrc : null}></StyledUserImage>
           <input type="text"></input>
           <span></span>
           <button>Meow</button>

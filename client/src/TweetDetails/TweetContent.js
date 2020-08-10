@@ -6,7 +6,7 @@ import { CurrentUserContext } from "../CurrentUserContext";
 import { AiOutlineRetweet } from "react-icons/ai";
 
 const TweetContent = (props) => {
-  const { tweetFeed, currentUser } = React.useContext(CurrentUserContext);
+  const { tweetFeed, currentUser, profileUser } = React.useContext(CurrentUserContext);
 
   return (
     <div>

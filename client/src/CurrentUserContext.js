@@ -1,7 +1,7 @@
 import React from "react";
 
 export const CurrentUserProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = React.useState(null);
+  const [currentUser, setCurrentUser] = React.useState('null');
   const [status, setStatus] = React.useState("loading");
   const [tweetFeed, setTweetFeed] = React.useState(null);
   const [profileUser, setProfileUser] = React.useState(null);
@@ -13,26 +13,33 @@ export const CurrentUserProvider = ({ children }) => {
     fetch("/api/me/profile")
       .then((res) => res.json())
       .then((data) => {
-        if (status === "loading") {
-          setCurrentUser(data);
-          setStatus("idle");
-          // fetch user feed once we know the user
-          fetch(`/api/${currentUser.profile.handle}/feed`)
-            .then((res) => res.json())
-            .then((userFeed) => {
-              setTweetFeed(userFeed);
-            })
-            .catch((err) => console.log(err));
-          // fetch all the tweets for home feed
-          fetch('/api/me/home-feed')
-            .then(res => res.json())
-            .then(feed => {
-              setHomeFeed(feed);
-            })
-        }
+        console.log('data', data)
+        setCurrentUser(data.profile);
+        setStatus("idle");
+        console.log('currentUser', currentUser)
+      })
+      .then((data) => {
+        console.log('currentUser', currentUser)
+        // fetch user feed once we know the user
+        fetch(`/api/${currentUser.handle}/feed`)
+          .then((res) => res.json())
+          .then((userFeed) => {
+            setTweetFeed(userFeed);
+          })
+          .catch((err) => console.log(err));
+      })
+      .then((data) => {
+        // fetch all the tweets for home feed
+        fetch("/api/me/home-feed")
+          .then((res) => res.json())
+          .then((feed) => {
+            setHomeFeed(feed);
+            console.log("homefeed", homeFeed);
+          })
+          .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
-  });
+  }, []);
 
   return (
     <CurrentUserContext.Provider
@@ -45,6 +52,8 @@ export const CurrentUserProvider = ({ children }) => {
         setTweetFeed,
         homeFeed,
         setHomeFeed,
+        profileUser,
+        setProfileUser,
       }}
     >
       {children}
