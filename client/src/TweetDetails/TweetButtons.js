@@ -10,13 +10,17 @@ import { FiUpload } from "react-icons/fi";
 
 const TweetButtons = (props) => {
   const { tweetFeed, currentUser } = React.useContext(CurrentUserContext);
-
+  function handleClick(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    console.log('buttonclick')
+  }
   return (
     <ButtonContainer>
-      <StyledButton><FaRegCommentAlt /></StyledButton>
-      <StyledButton><AiOutlineRetweet /></StyledButton>
-      <StyledButton><FcLike /></StyledButton>
-      <StyledButton><FiUpload /></StyledButton>
+      <StyledButton onClick={handleClick}><FaRegCommentAlt /></StyledButton>
+      <StyledButton onClick={handleClick}><AiOutlineRetweet /></StyledButton>
+      <StyledButton onClick={handleClick}><FcLike /></StyledButton>
+      <StyledButton onClick={handleClick}><FiUpload /></StyledButton>
     </ButtonContainer>
   );
 };

@@ -18,14 +18,16 @@ const ProfileFeed = () => {
       {tweetFeed
         ? tweetFeed.tweetIds.map((tweet) => {
             return (
-              <ProfileFeedContainer key={tweet}>
-                <Retweet tweetId={tweet}></Retweet>
-                <TweetUserImage tweetId={tweet}></TweetUserImage>
-                <TweetAuthor tweetId={tweet}></TweetAuthor>
-                <TweetBio tweetId={tweet}></TweetBio>
-                <TweetContent tweetId={tweet}></TweetContent>
-                <TweetButtons tweetId={tweet}></TweetButtons>
-              </ProfileFeedContainer>
+              <a href={`/tweet/${tweet}`}>
+                <ProfileFeedContainer key={tweet}>
+                  <Retweet tweetId={tweet}></Retweet>
+                  <TweetUserImage tweetId={tweet}></TweetUserImage>
+                  <TweetAuthor tweetId={tweet}></TweetAuthor>
+                  <TweetBio tweetId={tweet}></TweetBio>
+                  <TweetContent tweetId={tweet}></TweetContent>
+                  <TweetButtons tweetId={tweet}></TweetButtons>
+                </ProfileFeedContainer>
+              </a>
             );
           })
         : "Loading"}

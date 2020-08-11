@@ -13,3 +13,8 @@
   - Why does the first render doesn't work while fetching the data from the user?
   - why do we need a useEffect?
 
+- I often start a problem, get stuck, go for another problem, come back to the first one, get stuck again, go to another one, etc...
+  - my commits are usually too big imo but i'd rather that than incomplete commits
+
+- tweet button click would activate parent anchor tag
+  <!-- https://stackoverflow.com/questions/41135443/stop-event-bubbling-of-a-button-within-an-anchor-tag -->

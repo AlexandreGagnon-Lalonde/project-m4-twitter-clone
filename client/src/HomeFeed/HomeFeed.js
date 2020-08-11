@@ -29,14 +29,16 @@ const HomeFeed = () => {
           {homeFeed
             ? homeFeed.tweetIds.map((tweet) => {
                 return (
-                  <ProfileFeedContainer key={tweet}>
-                    <HomeRetweet tweetId={tweet}></HomeRetweet>
-                    <HomeTweetUserImage tweetId={tweet}></HomeTweetUserImage>
-                    <HomeTweetAuthor tweetId={tweet}></HomeTweetAuthor>
-                    <HomeTweetBio tweetId={tweet}></HomeTweetBio>
-                    <HomeTweetContent tweetId={tweet}></HomeTweetContent>
-                    <HomeTweetButton tweetId={tweet}></HomeTweetButton>
-                  </ProfileFeedContainer>
+                  <a href={`/tweet/${tweet}`}>
+                    <ProfileFeedContainer key={tweet}>
+                      <HomeRetweet tweetId={tweet}></HomeRetweet>
+                      <HomeTweetUserImage tweetId={tweet}></HomeTweetUserImage>
+                      <HomeTweetAuthor tweetId={tweet}></HomeTweetAuthor>
+                      <HomeTweetBio tweetId={tweet}></HomeTweetBio>
+                      <HomeTweetContent tweetId={tweet}></HomeTweetContent>
+                      <HomeTweetButton tweetId={tweet}></HomeTweetButton>
+                    </ProfileFeedContainer>
+                  </a>
                 );
               })
             : "Loading"}

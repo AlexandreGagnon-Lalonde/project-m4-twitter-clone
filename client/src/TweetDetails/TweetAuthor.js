@@ -17,7 +17,7 @@ const TweetAuthor = (props) => {
   if (tweetFeed.tweetsById[props.tweetId].retweetFrom) {
     return (
       <div>
-        {tweetFeed.tweetsById[props.tweetId].author.displayName} @
+        <a href={`/${profileUser.profile.handle}`}>{tweetFeed.tweetsById[props.tweetId].author.displayName}</a> @
         {tweetFeed.tweetsById[props.tweetId].author.handle} · Joined{" "}
         {retweetUserDate}
       </div>
@@ -25,7 +25,7 @@ const TweetAuthor = (props) => {
   } else {
     return (
       <div>
-        {profileUser.profile.displayName} @{profileUser.profile.handle} · Joined{" "}
+        <a href={`/${profileUser.profile.handle}`}>{profileUser.profile.displayName}</a> @{profileUser.profile.handle} · Joined{" "}
         {profileUserDate}
       </div>
     );
