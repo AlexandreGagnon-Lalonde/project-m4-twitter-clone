@@ -9,14 +9,12 @@ const moment = require("moment");
 const BigTweetTime = (props) => {
   const { tweetFeed, currentUser, profileUser, homeFeed } = React.useContext(CurrentUserContext);
 
-let time = new Date(`${homeFeed.tweetsById[props.tweetId].timeStamp}`)
-console.log(time)
-console.log(moment(homeFeed.tweetsById[props.tweetId].timeStamp).format('MMM Do YYYY'))
-console.log(moment(homeFeed.tweetsById[props.tweetId].timeStamp).format('LT'))
-  //  
+  const time = moment(homeFeed.tweetsById[props.tweetId].timeStamp).format('LT');
+  const date = moment(homeFeed.tweetsById[props.tweetId].timeStamp).format('ll').replace(/,/, '');
+
   return (
     <div>
-      {'asdf'}
+      {`${time} · ${date} · Critter web app`}
     </div>
   );
 };

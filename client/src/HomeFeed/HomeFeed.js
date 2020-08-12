@@ -11,20 +11,43 @@ import HomeTweetAuthor from "./HomeTweetAuthor";
 import HomeTweetContent from "./HomeTweetContent";
 import HomeTweetButton from "./HomeTweetButton";
 import { CurrentUserContext } from "../CurrentUserContext";
+// import data from "../../../server/data";
 
 const HomeFeed = () => {
-  const { homeFeed, currentUser } = React.useContext(CurrentUserContext);
+  const { homeFeed, currentUser, setNewTweet, newTweet, inputLength, setInputLength } = React.useContext(CurrentUserContext);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const data = new FormData(event.target)
+    console.log('homefeeddata', newTweet)
+
+    fetch('/api/tweet', {
+      method: 'POST',
+      body: JSON.stringify({
+        status: newTweet,
+      }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+  }
+
   return (
     <Wrapper>
       <Sidebar></Sidebar>
       <div>
         <h1>Home</h1>
-        <div>
+        <form onSubmit={handleSubmit}>
           <StyledUserImage src={currentUser ? currentUser.avatarSrc : null}></StyledUserImage>
-          <input type="text"></input>
+          <input id="tweet" name="tweet" type="text" onChange={(ev) => {
+            setNewTweet(ev.target.value);
+            setInputLength(ev.target.value.length);
+          }}></input>
           <span></span>
-          <button>Meow</button>
-        </div>
+          <button disabled={inputLength <= 0 || inputLength > 280}>Meow</button>
+        </form>
         <div>
           {homeFeed
             ? homeFeed.tweetIds.map((tweet) => {
