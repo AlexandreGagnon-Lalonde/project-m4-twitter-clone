@@ -13,7 +13,33 @@ const BigTweetButtons = (props) => {
   function handleClick(e) {
     e.stopPropagation();
     e.preventDefault();
-    console.log("buttonclick");
+    if (!props.tweetLike) {
+      fetch(`/api/tweet/${props.tweetId}/like`, {
+        method: "PUT",
+        body: JSON.stringify({
+          like: true,
+        }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }).then((state) => {
+        props.setTweetLike(true);
+      });
+    } else {
+      fetch(`/api/tweet/${props.tweetId}/like`, {
+        method: "PUT",
+        body: JSON.stringify({
+          like: false,
+        }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }).then((state) => {
+        props.setTweetLike(false);
+      });
+    }
   }
 
   return (

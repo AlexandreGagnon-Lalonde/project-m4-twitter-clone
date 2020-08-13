@@ -20,7 +20,7 @@ const MainProfileContent = (props) => {
       <FollowButton profileUser={props.profileUser} following={props.following} setFollowingLoaded={props.setFollowingLoaded}></FollowButton>
       <ProfileInfo profileUser={props.profileUser}></ProfileInfo>
       <Assets profileUser={props.profileUser}></Assets>
-      <ProfileFeed profileUser={props.profileUser} tweetFeed={props.tweetFeed}></ProfileFeed>
+      <ProfileFeed profileUser={props.profileUser} tweetFeed={props.tweetFeed} tweetLike={props.tweetLike} setTweetLike={props.setTweetLike}></ProfileFeed>
     </Wrapper>
   );
 };

@@ -21,3 +21,5 @@
 
 - Trouble fetching users following currentUser data because I was trying to do it before currentUser was defined
 - solved by lots of tweaks and adding currentUser to the react.useeffect end array
+
+- When the user doesn't follow another user there is an error on the bigTweet Page

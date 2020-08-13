@@ -58,7 +58,7 @@ const HomeFeed = () => {
           <button disabled={inputLength <= 0 || inputLength > 280}>Meow</button>
         </form>
         <div>
-          {homeFeed
+          {homeFeed && currentUser
             ? homeFeed.tweetIds.map((tweet) => {
                 return (
                   <a href={`/tweet/${tweet}`}>

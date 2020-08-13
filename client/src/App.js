@@ -15,6 +15,8 @@ import Profile from "./Profile/Profile";
 import GlobalStyles from "./GlobalStyles";
 
 const App = () => {
+  const [tweetLike, setTweetLike] = React.useState(false);
+
   return (
     <BrowserRouter>
       <GlobalStyles />
@@ -30,10 +32,10 @@ const App = () => {
             <Bookmarks />
           </Route>
           <Route exact path="/tweet/:tweetId">
-            <TweetDetails />
+            <TweetDetails tweetLike={tweetLike} setTweetLike={setTweetLike}/>
           </Route>
           <Route path="/:profileId">
-            <Profile />
+            <Profile tweetLike={tweetLike} setTweetLike={setTweetLike}/>
           </Route>
         </Switch>
       </Router>

@@ -21,15 +21,15 @@ const BigTweet = (props) => {
   if (homeFeed) {
     return (
       <Wrapper>
-        <BigTweetUserImage tweetId={props.tweetId}></BigTweetUserImage>
+        <BigTweetUserImage tweetId={props.tweetId} tweetFeed={props.tweetFeed}></BigTweetUserImage>
         <BigTweetAuthorDisplayName
-          tweetId={props.tweetId}
+          tweetId={props.tweetId} tweetFeed={props.tweetFeed}
         ></BigTweetAuthorDisplayName>
-        <BigTweetAuthorHandle tweetId={props.tweetId}></BigTweetAuthorHandle>
-        <BigTweetBio tweetId={props.tweetId}></BigTweetBio>
-        <BigTweetContent tweetId={props.tweetId}></BigTweetContent>
-        <BigTweetTime tweetId={props.tweetId}></BigTweetTime>
-        <BigTweetButtons tweetId={props.tweetId}></BigTweetButtons>
+        <BigTweetAuthorHandle tweetId={props.tweetId} tweetFeed={props.tweetFeed}></BigTweetAuthorHandle>
+        <BigTweetBio tweetId={props.tweetId} tweetFeed={props.tweetFeed}></BigTweetBio>
+        <BigTweetContent tweetId={props.tweetId} tweetFeed={props.tweetFeed}></BigTweetContent>
+        <BigTweetTime tweetId={props.tweetId} tweetFeed={props.tweetFeed}></BigTweetTime>
+        <BigTweetButtons tweetId={props.tweetId} tweetFeed={props.tweetFeed} tweetLike={props.tweetLike} setTweetLike={props.setTweetLike}></BigTweetButtons>
       </Wrapper>
     );
   } else {

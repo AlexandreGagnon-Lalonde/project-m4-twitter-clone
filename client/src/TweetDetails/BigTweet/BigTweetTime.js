@@ -4,17 +4,19 @@ import styled from "styled-components";
 
 import { CurrentUserContext } from "../../CurrentUserContext";
 
-const moment = require("moment");
+const { format } = require('date-fns');
 
 const BigTweetTime = (props) => {
-  const { tweetFeed, currentUser, profileUser, homeFeed } = React.useContext(CurrentUserContext);
+  const { homeFeed } = React.useContext(CurrentUserContext);
 
-  const time = moment(homeFeed.tweetsById[props.tweetId].timeStamp).format('LT');
-  const date = moment(homeFeed.tweetsById[props.tweetId].timeStamp).format('ll').replace(/,/, '');
+  const time = format(new Date(homeFeed.tweetsById[props.tweetId].timestamp), 'h:mm') + ' PM';
+  const date = format(new Date(homeFeed.tweetsById[props.tweetId].timestamp), 'LLL d y');
+  console.log(new Date(homeFeed.tweetsById[props.tweetId].timestamp))
 
   return (
+
     <div>
-      {`${time} · ${date} · Critter web app`}
+      {homeFeed ? `${time} · ${date} · Critter web app` : 'Loading'}
     </div>
   );
 };

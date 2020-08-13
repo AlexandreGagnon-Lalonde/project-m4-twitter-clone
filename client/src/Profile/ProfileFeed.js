@@ -25,7 +25,7 @@ const ProfileFeed = (props) => {
                   <TweetAuthor tweetId={tweet} profileUser={props.profileUser} tweetFeed={props.tweetFeed}></TweetAuthor>
                   <TweetBio tweetId={tweet} profileUser={props.profileUser} tweetFeed={props.tweetFeed}></TweetBio>
                   <TweetContent tweetId={tweet} profileUser={props.profileUser} tweetFeed={props.tweetFeed}></TweetContent>
-                  <TweetButtons tweetId={tweet} profileUser={props.profileUser} tweetFeed={props.tweetFeed}></TweetButtons>
+                  <TweetButtons tweetId={tweet} profileUser={props.profileUser} tweetFeed={props.tweetFeed} tweetLike={props.tweetLike} setTweetLike={props.setTweetLike}></TweetButtons>
                 </ProfileFeedContainer>
               </a>
             );

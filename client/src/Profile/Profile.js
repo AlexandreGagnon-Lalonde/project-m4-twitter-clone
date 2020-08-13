@@ -6,7 +6,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import { CurrentUserContext } from "../CurrentUserContext";
 import MainProfileContent from "./MainProfileContent";
 
-const Profile = () => {
+const Profile = (props) => {
   const { currentUser, setCurrentUser, status, setStatus } = React.useContext(
     CurrentUserContext
   );
@@ -16,12 +16,9 @@ const Profile = () => {
   const [tweetFeed, setTweetFeed] = React.useState(null);
   const [following, setFollowing] = React.useState(null);
   const [followingLoaded, setFollowingLoaded] = React.useState(false);
-  const [followers, setFollowers] = React.useState(null);
 
   let temp;
   let userHandle;
-
-  console.log("profilecurrentUser", currentUser);
 
   if (profileUser) {
     temp = profileUser.profile.displayName;
@@ -71,6 +68,8 @@ const Profile = () => {
           tweetFeed={tweetFeed}
           following={following}
           setFollowingLoaded={setFollowingLoaded}
+          tweetLike={props.tweetLike}
+          setTweetLike={props.setTweetLike}
         ></MainProfileContent>
       ) : (
         <div>{temp}</div>
