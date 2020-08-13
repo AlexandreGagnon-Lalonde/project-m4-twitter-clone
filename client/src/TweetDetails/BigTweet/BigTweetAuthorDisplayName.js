@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { CurrentUserContext } from "../../CurrentUserContext";
 
 const BigTweetAuthorDisplayName = (props) => {
-  const { profileUser, homeFeed } = React.useContext(CurrentUserContext);
+  const { profileUser, homeFeed, currentUser } = React.useContext(CurrentUserContext);
   console.log("homeFeed", homeFeed);
   return (
     <div>

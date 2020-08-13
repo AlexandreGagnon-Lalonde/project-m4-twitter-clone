@@ -7,25 +7,25 @@ import { AiOutlineRetweet } from "react-icons/ai";
 const moment = require("moment");
 
 const TweetAuthor = (props) => {
-  const { tweetFeed, currentUser, homeFeed, profileUser } = React.useContext(CurrentUserContext);
-  let profileUserDate = moment(new Date(profileUser.profile.joined)).format(
+  const { currentUser, homeFeed } = React.useContext(CurrentUserContext);
+  let profileUserDate = moment(new Date(props.profileUser.profile.joined)).format(
     "MMM Do"
   );
   let retweetUserDate = moment(
-    new Date(tweetFeed.tweetsById[props.tweetId].author.joined)
+    new Date(props.tweetFeed.tweetsById[props.tweetId].author.joined)
   ).format("MMM Do");
-  if (tweetFeed.tweetsById[props.tweetId].retweetFrom) {
+  if (props.tweetFeed.tweetsById[props.tweetId].retweetFrom) {
     return (
       <div>
-        <a href={`/${tweetFeed.tweetsById[props.tweetId].author.handle}`}>{tweetFeed.tweetsById[props.tweetId].author.displayName}</a> @
-        {tweetFeed.tweetsById[props.tweetId].author.handle} · Joined{" "}
+        <a href={`/${props.tweetFeed.tweetsById[props.tweetId].author.handle}`}>{props.tweetFeed.tweetsById[props.tweetId].author.displayName}</a> @
+        {props.tweetFeed.tweetsById[props.tweetId].author.handle} · Joined{" "}
         {retweetUserDate}
       </div>
     );
   } else {
     return (
       <div>
-        <a href={`/${profileUser.profile.handle}`}>{profileUser.profile.displayName}</a> @{profileUser.profile.handle} · Joined{" "}
+        <a href={`/${props.profileUser.profile.handle}`}>{props.profileUser.profile.displayName}</a> @{props.profileUser.profile.handle} · Joined{" "}
         {profileUserDate}
       </div>
     );

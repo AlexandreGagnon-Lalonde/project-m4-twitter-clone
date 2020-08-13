@@ -7,13 +7,9 @@ import { AiOutlineRetweet } from "react-icons/ai";
 
 const HomeTweetUserImage = (props) => {
   const { homeFeed, currentUser } = React.useContext(CurrentUserContext);
-  if (homeFeed.tweetsById[props.tweetId].retweetFrom) {
     return (
       <StyledImage src={homeFeed.tweetsById[props.tweetId].author.avatarSrc}></StyledImage>
     );
-  } else {
-    return <StyledImage src={currentUser.avatarSrc}></StyledImage>
-  }
 }
 
 const StyledImage = styled.img`

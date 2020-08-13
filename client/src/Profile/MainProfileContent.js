@@ -15,12 +15,12 @@ const MainProfileContent = (props) => {
   const { currentUser } = React.useContext(CurrentUserContext);
   return (
     <Wrapper>
-      <Banner></Banner>
-      <ProfilePic></ProfilePic>
-      <FollowButton></FollowButton>
-      <ProfileInfo></ProfileInfo>
-      <Assets></Assets>
-      <ProfileFeed></ProfileFeed>
+      <Banner profileUser={props.profileUser}></Banner>
+      <ProfilePic profileUser={props.profileUser}></ProfilePic>
+      <FollowButton profileUser={props.profileUser} following={props.following} setFollowingLoaded={props.setFollowingLoaded}></FollowButton>
+      <ProfileInfo profileUser={props.profileUser}></ProfileInfo>
+      <Assets profileUser={props.profileUser}></Assets>
+      <ProfileFeed profileUser={props.profileUser} tweetFeed={props.tweetFeed}></ProfileFeed>
     </Wrapper>
   );
 };
@@ -30,6 +30,7 @@ const Wrapper = styled.div`
   margin-right: 100px;
   border-right: 1px solid lightgray;
   border-left: 1px solid lightgray;
+  width: 1000px;
 `;
 
 export default MainProfileContent;

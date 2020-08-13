@@ -14,12 +14,11 @@ import { CurrentUserContext } from "../CurrentUserContext";
 // import data from "../../../server/data";
 
 const HomeFeed = () => {
-  const { homeFeed, currentUser, setNewTweet, newTweet, inputLength, setInputLength } = React.useContext(CurrentUserContext);
+  const { homeFeed, currentUser, setNewTweet, newTweet, inputLength, setInputLength, setHomeFeed } = React.useContext(CurrentUserContext);
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    const data = new FormData(event.target)
     console.log('homefeeddata', newTweet)
 
     fetch('/api/tweet', {
@@ -32,6 +31,16 @@ const HomeFeed = () => {
         "Content-Type": "application/json",
       },
     })
+    .then(state => {
+      fetch("/api/me/home-feed")
+      .then((res) => res.json())
+      .then((feed) => {
+        setHomeFeed(feed);
+      })
+      .catch((err) => console.log(err));
+    })
+    // reset input field after new tweet
+    document.getElementById('newTweetId').reset()
   }
 
   return (
@@ -39,13 +48,13 @@ const HomeFeed = () => {
       <Sidebar></Sidebar>
       <div>
         <h1>Home</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} id='newTweetId'>
           <StyledUserImage src={currentUser ? currentUser.avatarSrc : null}></StyledUserImage>
           <input id="tweet" name="tweet" type="text" onChange={(ev) => {
             setNewTweet(ev.target.value);
             setInputLength(ev.target.value.length);
           }}></input>
-          <span></span>
+          <span>{inputLength > 0 ? 280 - inputLength : 280}</span>
           <button disabled={inputLength <= 0 || inputLength > 280}>Meow</button>
         </form>
         <div>
@@ -75,6 +84,7 @@ const Wrapper = styled.div`
 `;
 const ProfileFeedContainer = styled.div`
   border: 1px solid black;
+  width: 1000px;
 `;
 const StyledUserImage = styled.img`
   width: 50px;

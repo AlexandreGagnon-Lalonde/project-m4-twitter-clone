@@ -6,10 +6,10 @@ import { CurrentUserContext } from "../CurrentUserContext";
 import { AiOutlineRetweet } from "react-icons/ai";
 
 const TweetBio = (props) => {
-  const { tweetFeed, currentUser, profileUser } = React.useContext(CurrentUserContext);
+  const { currentUser } = React.useContext(CurrentUserContext);
   return <div>
-    {tweetFeed ?
-      tweetFeed.tweetsById[props.tweetId].status : 
+    {props.tweetFeed ?
+      props.tweetFeed.tweetsById[props.tweetId].status : 
       'Loading'
     }
   </div>

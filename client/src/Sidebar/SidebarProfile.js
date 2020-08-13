@@ -14,15 +14,9 @@ import { CurrentUserContext } from "../CurrentUserContext";
 
 const SidebarProfile = () => {
   const { currentUser, status } = React.useContext(CurrentUserContext);
-let userHandle;
-  if (status === 'loading') {
-    userHandle = ':profileId';
-  } else {
-    userHandle = currentUser.handle;
-  }
-
+let userHandle = currentUser.handle;
   return (
-    <NavigationLink to={`/${userHandle}`}>
+    <NavigationLink to={`/${currentUser.handle}`}>
       <RiUser3Line />
       <Spacer>Profile</Spacer>
     </NavigationLink>

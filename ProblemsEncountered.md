@@ -18,3 +18,6 @@
 
 - tweet button click would activate parent anchor tag
   <!-- https://stackoverflow.com/questions/41135443/stop-event-bubbling-of-a-button-within-an-anchor-tag -->
+
+- Trouble fetching users following currentUser data because I was trying to do it before currentUser was defined
+- solved by lots of tweaks and adding currentUser to the react.useeffect end array

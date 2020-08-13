@@ -10,22 +10,22 @@ import TweetAuthor from "../TweetDetails/TweetAuthor";
 import TweetContent from "../TweetDetails/TweetContent";
 import TweetButtons from "../TweetDetails/TweetButtons";
 
-const ProfileFeed = () => {
-  const { tweetFeed } = React.useContext(CurrentUserContext);
-  console.log("tweetfeed", tweetFeed);
+const ProfileFeed = (props) => {
+  const { currentUser } = React.useContext(CurrentUserContext);
+
   return (
     <div>
-      {tweetFeed
-        ? tweetFeed.tweetIds.map((tweet) => {
+      {props.tweetFeed
+        ? props.tweetFeed.tweetIds.map((tweet) => {
             return (
               <a href={`/tweet/${tweet}`}>
                 <ProfileFeedContainer key={tweet}>
-                  <Retweet tweetId={tweet}></Retweet>
-                  <TweetUserImage tweetId={tweet}></TweetUserImage>
-                  <TweetAuthor tweetId={tweet}></TweetAuthor>
-                  <TweetBio tweetId={tweet}></TweetBio>
-                  <TweetContent tweetId={tweet}></TweetContent>
-                  <TweetButtons tweetId={tweet}></TweetButtons>
+                  <Retweet tweetId={tweet} profileUser={props.profileUser} tweetFeed={props.tweetFeed}></Retweet>
+                  <TweetUserImage tweetId={tweet} profileUser={props.profileUser} tweetFeed={props.tweetFeed}></TweetUserImage>
+                  <TweetAuthor tweetId={tweet} profileUser={props.profileUser} tweetFeed={props.tweetFeed}></TweetAuthor>
+                  <TweetBio tweetId={tweet} profileUser={props.profileUser} tweetFeed={props.tweetFeed}></TweetBio>
+                  <TweetContent tweetId={tweet} profileUser={props.profileUser} tweetFeed={props.tweetFeed}></TweetContent>
+                  <TweetButtons tweetId={tweet} profileUser={props.profileUser} tweetFeed={props.tweetFeed}></TweetButtons>
                 </ProfileFeedContainer>
               </a>
             );

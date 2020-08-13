@@ -7,18 +7,21 @@ import { CurrentUserContext } from "../CurrentUserContext";
 import MainProfileContent from "./MainProfileContent";
 
 const Profile = () => {
-  const {
-    currentUser,
-    setCurrentUser,
-    status,
-    setStatus,
-    tweetFeed,
-    setTweetFeed,
-    profileUser,
-    setProfileUser,
-  } = React.useContext(CurrentUserContext);
+  const { currentUser, setCurrentUser, status, setStatus } = React.useContext(
+    CurrentUserContext
+  );
+
+  const [profileUser, setProfileUser] = React.useState(null);
+  const [profileLoaded, setProfileLoaded] = React.useState(false);
+  const [tweetFeed, setTweetFeed] = React.useState(null);
+  const [following, setFollowing] = React.useState(null);
+  const [followingLoaded, setFollowingLoaded] = React.useState(false);
+  const [followers, setFollowers] = React.useState(null);
+
   let temp;
-  let userProfile;
+  let userHandle;
+
+  console.log("profilecurrentUser", currentUser);
 
   if (profileUser) {
     temp = profileUser.profile.displayName;
@@ -28,29 +31,47 @@ const Profile = () => {
 
   React.useEffect(() => {
     // grab user handle from the url
-    let userHandle = window.location.pathname.substr(1);
-    if (userHandle === ":profileId") {
-      userHandle = "treasurymog";
+    userHandle = window.location.pathname.substr(1);
+    if (!profileLoaded) {
+      fetch(`/api/${userHandle}/profile`)
+        .then((res) => res.json())
+        .then((profileData) => {
+          // set profile data
+          setProfileUser(profileData);
+          // confirm that profile is fetched
+          setProfileLoaded(true);
+          // fetch profile feed 
+          fetch(`/api/${userHandle}/feed/`)
+            .then((res) => res.json())
+            .then((profileFeed) => {
+              setTweetFeed(profileFeed);
+            });
+        })
+        .catch((err) => console.log(err));
     }
-
-    fetch(`/api/${userHandle}/profile`)
+    if (!followingLoaded) {
+          // fetch following array of currentUser
+    fetch(`/api/${currentUser.handle}/following`)
       .then((res) => res.json())
-      .then((profileData) => {
-        setProfileUser(profileData);
-        fetch(`/api/${userHandle}/feed/`)
-          .then((res) => res.json())
-          .then((profileFeed) => {
-            setTweetFeed(profileFeed);
-          });
+      .then((data) => {
+        setFollowing(data);
+        setFollowingLoaded(true)
       })
       .catch((err) => console.log(err));
-  }, []);
+
+    }
+  }, [profileUser, currentUser, userHandle, following, followingLoaded, setFollowingLoaded]);
 
   return (
     <Wrapper>
       <Sidebar></Sidebar>
-      {profileUser ? (
-        <MainProfileContent></MainProfileContent>
+      {profileUser && currentUser && following ? (
+        <MainProfileContent
+          profileUser={profileUser}
+          tweetFeed={tweetFeed}
+          following={following}
+          setFollowingLoaded={setFollowingLoaded}
+        ></MainProfileContent>
       ) : (
         <div>{temp}</div>
       )}

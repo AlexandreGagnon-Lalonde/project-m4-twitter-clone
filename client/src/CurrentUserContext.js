@@ -3,8 +3,6 @@ import React from "react";
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = React.useState("null");
   const [status, setStatus] = React.useState("loading");
-  const [tweetFeed, setTweetFeed] = React.useState(null);
-  const [profileUser, setProfileUser] = React.useState(null);
   const [homeFeed, setHomeFeed] = React.useState(null);
   const [newTweet, setNewTweet] = React.useState(null);
   const [inputLength, setInputLength] = React.useState(null);
@@ -12,22 +10,19 @@ export const CurrentUserProvider = ({ children }) => {
   // When the data is received, update currentUser.
   // Also, set `status` to `idle`
   React.useEffect(() => {
-    fetch("/api/me/profile")
+    if (status === 'loading') {
+          fetch("/api/me/profile")
       .then((res) => res.json())
       .then((data) => {
         setCurrentUser(data.profile);
         setStatus("idle");
       })
-      .then((data) => {
-        // fetch user feed once we know the user
-        fetch(`/api/${profileUser.handle}/feed`)
-          .then((res) => res.json())
-          .then((userFeed) => {
-            setTweetFeed(userFeed);
-          })
-          .catch((err) => console.log(err));
-      })
+      .then((data) => {})
+      .then((data) => {})
+      .then((data) => {})
       .catch((err) => console.log(err));
+
+    }
     // fetch all the tweets for home feed
     fetch("/api/me/home-feed")
       .then((res) => res.json())
@@ -44,12 +39,8 @@ export const CurrentUserProvider = ({ children }) => {
         setCurrentUser,
         status,
         setStatus,
-        tweetFeed,
-        setTweetFeed,
         homeFeed,
         setHomeFeed,
-        profileUser,
-        setProfileUser,
         newTweet,
         setNewTweet,
         inputLength,
