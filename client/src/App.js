@@ -32,10 +32,10 @@ const App = () => {
             <Bookmarks />
           </Route>
           <Route exact path="/tweet/:tweetId">
-            <TweetDetails tweetLike={tweetLike} setTweetLike={setTweetLike}/>
+            <TweetDetails tweetLike={tweetLike} setTweetLike={setTweetLike} />
           </Route>
           <Route path="/:profileId">
-            <Profile tweetLike={tweetLike} setTweetLike={setTweetLike}/>
+            <Profile tweetLike={tweetLike} setTweetLike={setTweetLike} />
           </Route>
         </Switch>
       </Router>

@@ -8,12 +8,11 @@ import { AiOutlineRetweet } from "react-icons/ai";
 const HomeTweetContent = (props) => {
   const { homeFeed, currentUser } = React.useContext(CurrentUserContext);
 
+  const mediaArrayLength = homeFeed.tweetsById[props.tweetId].media.length;
+  const mediaUrl = homeFeed.tweetsById[props.tweetId].media[0].url;
+
   return (
-    <div>
-      {homeFeed.tweetsById[props.tweetId].media.length !== 0
-        ? <img src={homeFeed.tweetsById[props.tweetId].media[0].url}></img>
-        : null}
-    </div>
+    <div>{mediaArrayLength !== 0 ? <img src={mediaUrl}></img> : null}</div>
   );
 };
 

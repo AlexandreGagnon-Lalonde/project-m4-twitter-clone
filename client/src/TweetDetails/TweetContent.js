@@ -10,9 +10,9 @@ const TweetContent = (props) => {
 
   return (
     <div>
-      {props.tweetFeed.tweetsById[props.tweetId].media.length !== 0
-        ? <img src={props.tweetFeed.tweetsById[props.tweetId].media[0].url}></img>
-        : null}
+      {props.tweetFeed.tweetsById[props.tweetId].media.length !== 0 ? (
+        <img src={props.tweetFeed.tweetsById[props.tweetId].media[0].url}></img>
+      ) : null}
     </div>
   );
 };

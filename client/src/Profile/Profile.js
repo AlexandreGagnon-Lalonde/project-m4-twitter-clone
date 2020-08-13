@@ -37,7 +37,7 @@ const Profile = (props) => {
           setProfileUser(profileData);
           // confirm that profile is fetched
           setProfileLoaded(true);
-          // fetch profile feed 
+          // fetch profile feed
           fetch(`/api/${userHandle}/feed/`)
             .then((res) => res.json())
             .then((profileFeed) => {
@@ -47,17 +47,23 @@ const Profile = (props) => {
         .catch((err) => console.log(err));
     }
     if (!followingLoaded) {
-          // fetch following array of currentUser
-    fetch(`/api/${currentUser.handle}/following`)
-      .then((res) => res.json())
-      .then((data) => {
-        setFollowing(data);
-        setFollowingLoaded(true)
-      })
-      .catch((err) => console.log(err));
-
+      // fetch following array of currentUser
+      fetch(`/api/${currentUser.handle}/following`)
+        .then((res) => res.json())
+        .then((data) => {
+          setFollowing(data);
+          setFollowingLoaded(true);
+        })
+        .catch((err) => console.log(err));
     }
-  }, [profileUser, currentUser, userHandle, following, followingLoaded, setFollowingLoaded]);
+  }, [
+    profileUser,
+    currentUser,
+    userHandle,
+    following,
+    followingLoaded,
+    setFollowingLoaded,
+  ]);
 
   return (
     <Wrapper>

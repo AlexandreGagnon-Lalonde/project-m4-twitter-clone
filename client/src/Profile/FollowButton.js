@@ -1,5 +1,5 @@
 import React from "react";
-import { useRef } from 'react';
+import { useRef } from "react";
 
 import styled from "styled-components";
 
@@ -8,10 +8,10 @@ import { COLORS } from "../constants";
 
 const FollowButton = (props) => {
   const { currentUser } = React.useContext(CurrentUserContext);
-  const followRef = useRef(null)
+  const followRef = useRef(null);
   let profileHandle = window.location.pathname.substr(1);
   function handleClick() {
-    console.log('followButton', props)
+    console.log("followButton", props);
     if (followRef.current.innerText === "Follow") {
       fetch(`/api/${props.profileUser.profile.handle}/follow`, {
         method: "PUT",
@@ -26,7 +26,7 @@ const FollowButton = (props) => {
         props.setFollowingLoaded(false);
       });
     } else if (followRef.current.innerText === "Unfollow") {
-      console.log('unfollow activated')
+      console.log("unfollow activated");
       fetch(`/api/${props.profileUser.profile.handle}/unfollow`, {
         method: "PUT",
         body: JSON.stringify({

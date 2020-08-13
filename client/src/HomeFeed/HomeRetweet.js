@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 import { CurrentUserContext } from "../CurrentUserContext";
 import { AiOutlineRetweet } from "react-icons/ai";
@@ -16,6 +16,6 @@ const HomeRetweer = (props) => {
   } else {
     return null;
   }
-}
+};
 
-export default HomeRetweer
+export default HomeRetweer;

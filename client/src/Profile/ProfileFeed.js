@@ -20,12 +20,38 @@ const ProfileFeed = (props) => {
             return (
               <a href={`/tweet/${tweet}`}>
                 <ProfileFeedContainer key={tweet}>
-                  <Retweet tweetId={tweet} profileUser={props.profileUser} tweetFeed={props.tweetFeed}></Retweet>
-                  <TweetUserImage tweetId={tweet} profileUser={props.profileUser} tweetFeed={props.tweetFeed}></TweetUserImage>
-                  <TweetAuthor tweetId={tweet} profileUser={props.profileUser} tweetFeed={props.tweetFeed}></TweetAuthor>
-                  <TweetBio tweetId={tweet} profileUser={props.profileUser} tweetFeed={props.tweetFeed}></TweetBio>
-                  <TweetContent tweetId={tweet} profileUser={props.profileUser} tweetFeed={props.tweetFeed}></TweetContent>
-                  <TweetButtons tweetId={tweet} profileUser={props.profileUser} tweetFeed={props.tweetFeed} tweetLike={props.tweetLike} setTweetLike={props.setTweetLike}></TweetButtons>
+                  <Retweet
+                    tweetId={tweet}
+                    profileUser={props.profileUser}
+                    tweetFeed={props.tweetFeed}
+                  ></Retweet>
+                  <TweetUserImage
+                    tweetId={tweet}
+                    profileUser={props.profileUser}
+                    tweetFeed={props.tweetFeed}
+                  ></TweetUserImage>
+                  <TweetAuthor
+                    tweetId={tweet}
+                    profileUser={props.profileUser}
+                    tweetFeed={props.tweetFeed}
+                  ></TweetAuthor>
+                  <TweetBio
+                    tweetId={tweet}
+                    profileUser={props.profileUser}
+                    tweetFeed={props.tweetFeed}
+                  ></TweetBio>
+                  <TweetContent
+                    tweetId={tweet}
+                    profileUser={props.profileUser}
+                    tweetFeed={props.tweetFeed}
+                  ></TweetContent>
+                  <TweetButtons
+                    tweetId={tweet}
+                    profileUser={props.profileUser}
+                    tweetFeed={props.tweetFeed}
+                    tweetLike={props.tweetLike}
+                    setTweetLike={props.setTweetLike}
+                  ></TweetButtons>
                 </ProfileFeedContainer>
               </a>
             );

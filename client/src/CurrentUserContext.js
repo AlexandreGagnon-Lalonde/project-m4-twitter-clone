@@ -10,18 +10,17 @@ export const CurrentUserProvider = ({ children }) => {
   // When the data is received, update currentUser.
   // Also, set `status` to `idle`
   React.useEffect(() => {
-    if (status === 'loading') {
-          fetch("/api/me/profile")
-      .then((res) => res.json())
-      .then((data) => {
-        setCurrentUser(data.profile);
-        setStatus("idle");
-      })
-      .then((data) => {})
-      .then((data) => {})
-      .then((data) => {})
-      .catch((err) => console.log(err));
-
+    if (status === "loading") {
+      fetch("/api/me/profile")
+        .then((res) => res.json())
+        .then((data) => {
+          setCurrentUser(data.profile);
+          setStatus("idle");
+        })
+        .then((data) => {})
+        .then((data) => {})
+        .then((data) => {})
+        .catch((err) => console.log(err));
     }
     // fetch all the tweets for home feed
     fetch("/api/me/home-feed")

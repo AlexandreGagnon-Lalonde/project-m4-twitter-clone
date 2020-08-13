@@ -9,7 +9,11 @@ const BigTweetUserImage = (props) => {
   const { tweetFeed, currentUser, profileUser, homeFeed } = React.useContext(
     CurrentUserContext
   );
-  return <StyledImage src={homeFeed.tweetsById[props.tweetId].author.avatarSrc}></StyledImage>;
+  return (
+    <StyledImage
+      src={homeFeed.tweetsById[props.tweetId].author.avatarSrc}
+    ></StyledImage>
+  );
 };
 
 const StyledImage = styled.img`

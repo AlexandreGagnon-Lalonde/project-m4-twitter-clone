@@ -17,10 +17,19 @@ const MainProfileContent = (props) => {
     <Wrapper>
       <Banner profileUser={props.profileUser}></Banner>
       <ProfilePic profileUser={props.profileUser}></ProfilePic>
-      <FollowButton profileUser={props.profileUser} following={props.following} setFollowingLoaded={props.setFollowingLoaded}></FollowButton>
+      <FollowButton
+        profileUser={props.profileUser}
+        following={props.following}
+        setFollowingLoaded={props.setFollowingLoaded}
+      ></FollowButton>
       <ProfileInfo profileUser={props.profileUser}></ProfileInfo>
       <Assets profileUser={props.profileUser}></Assets>
-      <ProfileFeed profileUser={props.profileUser} tweetFeed={props.tweetFeed} tweetLike={props.tweetLike} setTweetLike={props.setTweetLike}></ProfileFeed>
+      <ProfileFeed
+        profileUser={props.profileUser}
+        tweetFeed={props.tweetFeed}
+        tweetLike={props.tweetLike}
+        setTweetLike={props.setTweetLike}
+      ></ProfileFeed>
     </Wrapper>
   );
 };

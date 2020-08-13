@@ -6,11 +6,10 @@ import { CurrentUserContext } from "../../CurrentUserContext";
 
 const BigTweetAuthorHandle = (props) => {
   const { profileUser, homeFeed } = React.useContext(CurrentUserContext);
-  return (
-    <div>
-      @{homeFeed.tweetsById[props.tweetId].author.handle}
-    </div>
-  );
+
+  return <div>
+    @{homeFeed.tweetsById[props.tweetId].author.handle}
+  </div>;
 };
 
 export default BigTweetAuthorHandle;

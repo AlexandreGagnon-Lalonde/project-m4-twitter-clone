@@ -12,7 +12,7 @@ const ProfileInfo = (props) => {
   // https://stackoverflow.com/questions/1643320/get-month-name-from-date/18648314#18648314
   let month = date.toLocaleString("default", { month: "long" });
   let year = date.getFullYear();
-  
+
   return (
     <div>
       <p>{props.profileUser.profile.displayName}</p>
