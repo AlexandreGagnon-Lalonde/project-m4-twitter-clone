@@ -1,7 +1,5 @@
 import React from "react";
 
-import styled from "styled-components";
-
 import { CurrentUserContext } from "../../CurrentUserContext";
 
 const { format } = require("date-fns");

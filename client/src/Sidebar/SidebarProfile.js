@@ -3,11 +3,7 @@ import React from "react";
 import { RiUser3Line } from "react-icons/ri";
 import styled from "styled-components";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   NavLink,
-  Link,
 } from "react-router-dom";
 import { COLORS } from "../constants";
 import { CurrentUserContext } from "../CurrentUserContext";
@@ -23,10 +19,6 @@ const SidebarProfile = () => {
   );
 };
 
-const Wrapper = styled.div`
-  font-weight: bold;
-  color: #000;
-`;
 const Spacer = styled.span`
   padding: 0 10px;
 `;

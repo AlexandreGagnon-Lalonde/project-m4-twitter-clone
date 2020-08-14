@@ -1,13 +1,9 @@
 import React from "react";
 
-import styled from "styled-components";
 import { GoLocation } from "react-icons/go";
 import { MdDateRange } from "react-icons/md";
 
-import { CurrentUserContext } from "../CurrentUserContext";
-
 const ProfileInfo = (props) => {
-  const { currentUser, profileUser } = React.useContext(CurrentUserContext);
   let date = new Date(`${props.profileUser.profile.joined}`);
   // https://stackoverflow.com/questions/1643320/get-month-name-from-date/18648314#18648314
   let month = date.toLocaleString("default", { month: "long" });

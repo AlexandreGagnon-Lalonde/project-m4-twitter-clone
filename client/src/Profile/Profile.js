@@ -1,13 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import styled from "styled-components";
 
 import Sidebar from "../Sidebar/Sidebar";
 import { CurrentUserContext } from "../CurrentUserContext";
 import MainProfileContent from "./MainProfileContent";
+import LoadingIcon from '../LoadingFiller/LoadingFiller'
 
 const Profile = (props) => {
-  const { currentUser, setCurrentUser, status, setStatus } = React.useContext(
+  const { currentUser } = React.useContext(
     CurrentUserContext
   );
 
@@ -17,14 +17,7 @@ const Profile = (props) => {
   const [following, setFollowing] = React.useState(null);
   const [followingLoaded, setFollowingLoaded] = React.useState(false);
 
-  let temp;
   let userHandle;
-
-  if (profileUser) {
-    temp = profileUser.profile.displayName;
-  } else {
-    temp = "Loading";
-  }
 
   React.useEffect(() => {
     // grab user handle from the url
@@ -78,7 +71,7 @@ const Profile = (props) => {
           setTweetLike={props.setTweetLike}
         ></MainProfileContent>
       ) : (
-        <div>{temp}</div>
+        <LoadingIcon></LoadingIcon>
       )}
     </Wrapper>
   );

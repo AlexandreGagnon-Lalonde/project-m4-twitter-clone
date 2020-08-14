@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import { CurrentUserContext } from "../../CurrentUserContext";
 
@@ -13,7 +12,7 @@ import BigTweetTime from "./BigTweetTime";
 import BigTweetButtons from "./BigTweetButtons";
 
 const BigTweet = (props) => {
-  const { tweetFeed, currentUser, homeFeed, profileUser } = React.useContext(
+  const { homeFeed } = React.useContext(
     CurrentUserContext
   );
 

@@ -1,9 +1,5 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
   Link,
 } from "react-router-dom";
 
@@ -13,7 +9,6 @@ import SidebarNotifications from "./SidebarNotifications";
 import SidebarProfile from "./SidebarProfile";
 import SidebarHomeFeed from "./SidebarHomeFeed";
 import Logo from "../assets/logo.svg";
-import { COLORS } from "../constants";
 
 const Sidebar = () => {
   return (

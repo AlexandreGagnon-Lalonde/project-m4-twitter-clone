@@ -3,10 +3,9 @@ import React from "react";
 import styled from "styled-components";
 
 import { CurrentUserContext } from "../../CurrentUserContext";
-import { AiOutlineRetweet } from "react-icons/ai";
 
 const BigTweetUserImage = (props) => {
-  const { tweetFeed, currentUser, profileUser, homeFeed } = React.useContext(
+  const { homeFeed } = React.useContext(
     CurrentUserContext
   );
   return (

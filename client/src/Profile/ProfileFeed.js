@@ -2,7 +2,6 @@ import React from "react";
 
 import styled from "styled-components";
 
-import { CurrentUserContext } from "../CurrentUserContext";
 import Retweet from "../TweetDetails/Retweet";
 import TweetBio from "../TweetDetails/TweetBio";
 import TweetUserImage from "../TweetDetails/TweetUserImage";
@@ -11,8 +10,6 @@ import TweetContent from "../TweetDetails/TweetContent";
 import TweetButtons from "../TweetDetails/TweetButtons";
 
 const ProfileFeed = (props) => {
-  const { currentUser } = React.useContext(CurrentUserContext);
-
   return (
     <div>
       {props.tweetFeed

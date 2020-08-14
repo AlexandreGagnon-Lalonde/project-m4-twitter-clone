@@ -2,8 +2,6 @@ import React from "react";
 
 import styled from "styled-components";
 
-import { CurrentUserContext } from "../CurrentUserContext";
-
 const Assets = () => {
   return (
     <AssetsContainer>

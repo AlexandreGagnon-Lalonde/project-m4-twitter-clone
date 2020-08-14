@@ -1,9 +1,7 @@
 import React from "react";
 
-import styled from "styled-components";
-
 import { CurrentUserContext } from "../CurrentUserContext";
-import { AiOutlineRetweet } from "react-icons/ai";
+
 const { format } = require("date-fns");
 
 const HomeTweetAuthor = (props) => {

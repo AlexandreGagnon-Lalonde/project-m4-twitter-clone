@@ -1,15 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import styled from "styled-components";
 
 import Sidebar from "../Sidebar/Sidebar";
-import profileFeed from "../Profile/ProfileFeed";
 import HomeRetweet from "./HomeRetweet";
 import HomeTweetBio from "./HomeTweetBio";
 import HomeTweetUserImage from "./HomeTweetUserImage";
 import HomeTweetAuthor from "./HomeTweetAuthor";
 import HomeTweetContent from "./HomeTweetContent";
 import HomeTweetButton from "./HomeTweetButton";
+import LoadingIcon from '../LoadingFiller/LoadingFiller'
 import { CurrentUserContext } from "../CurrentUserContext";
 // import data from "../../../server/data";
 
@@ -23,7 +22,7 @@ const HomeFeed = () => {
     setInputLength,
     setHomeFeed,
   } = React.useContext(CurrentUserContext);
-
+console.log('homeFeed', homeFeed)
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -87,7 +86,7 @@ const HomeFeed = () => {
                   </a>
                 );
               })
-            : "Loading"}
+            : <LoadingIcon></LoadingIcon>}
         </div>
       </div>
     </Wrapper>

@@ -1,18 +1,14 @@
 import React from "react";
 
-import styled from "styled-components";
-
 import { CurrentUserContext } from "../CurrentUserContext";
-import { AiOutlineRetweet } from "react-icons/ai";
 
 const HomeTweetContent = (props) => {
-  const { homeFeed, currentUser } = React.useContext(CurrentUserContext);
-
+  const { homeFeed } = React.useContext(CurrentUserContext);
+console.log('hometweetcontent', homeFeed)
   const mediaArrayLength = homeFeed.tweetsById[props.tweetId].media.length;
-  const mediaUrl = homeFeed.tweetsById[props.tweetId].media[0].url;
 
   return (
-    <div>{mediaArrayLength !== 0 ? <img src={mediaUrl}></img> : null}</div>
+    <div>{mediaArrayLength !== 0 ? <img src={homeFeed.tweetsById[props.tweetId].media[0].url} alt='military cat'></img> : null}</div>
   );
 };
 

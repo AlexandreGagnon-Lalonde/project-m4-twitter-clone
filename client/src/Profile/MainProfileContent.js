@@ -1,8 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import styled from "styled-components";
-
-import { CurrentUserContext } from "../CurrentUserContext";
 
 import Banner from "./Banner";
 import ProfilePic from "./ProfilePic";
@@ -12,7 +9,6 @@ import Assets from "./Assets";
 import ProfileFeed from "./ProfileFeed";
 
 const MainProfileContent = (props) => {
-  const { currentUser } = React.useContext(CurrentUserContext);
   return (
     <Wrapper>
       <Banner profileUser={props.profileUser}></Banner>

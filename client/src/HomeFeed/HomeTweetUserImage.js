@@ -3,10 +3,9 @@ import React from "react";
 import styled from "styled-components";
 
 import { CurrentUserContext } from "../CurrentUserContext";
-import { AiOutlineRetweet } from "react-icons/ai";
 
 const HomeTweetUserImage = (props) => {
-  const { homeFeed, currentUser } = React.useContext(CurrentUserContext);
+  const { homeFeed } = React.useContext(CurrentUserContext);
 
   const authorAvatarSrc = homeFeed.tweetsById[props.tweetId].author.avatarSrc;
   

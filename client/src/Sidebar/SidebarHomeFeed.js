@@ -3,11 +3,7 @@ import React from "react";
 import { FiHome } from "react-icons/fi";
 import styled from "styled-components";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   NavLink,
-  Link,
 } from "react-router-dom";
 import { COLORS } from "../constants";
 

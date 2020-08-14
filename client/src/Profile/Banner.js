@@ -2,11 +2,7 @@ import React from "react";
 
 import styled from "styled-components";
 
-import { CurrentUserContext } from "../CurrentUserContext";
-
 const Banner = (props) => {
-  const { currentUser, profileUser } = React.useContext(CurrentUserContext);
-
   return (
     <ImgContainer src={props.profileUser.profile.bannerSrc}></ImgContainer>
   );

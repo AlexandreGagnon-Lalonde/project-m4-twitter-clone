@@ -1,14 +1,8 @@
 import React from "react";
 
-import styled from "styled-components";
-
-import { CurrentUserContext } from "../CurrentUserContext";
-import { AiOutlineRetweet } from "react-icons/ai";
-
 const { format } = require("date-fns");
 
 const TweetAuthor = (props) => {
-  const { currentUser, homeFeed } = React.useContext(CurrentUserContext);
   let profileUserDate = format(
     new Date(props.profileUser.profile.joined),
     "MMM do"
