@@ -8,7 +8,8 @@ import HomeTweetUserImage from "./HomeTweetUserImage";
 import HomeTweetAuthor from "./HomeTweetAuthor";
 import HomeTweetContent from "./HomeTweetContent";
 import HomeTweetButton from "./HomeTweetButton";
-import LoadingIcon from '../LoadingFiller/LoadingFiller'
+import LoadingIcon from '../LoadingFiller/LoadingFiller';
+import HomeFeedForm from './HomeFeedForm';
 import { CurrentUserContext } from "../CurrentUserContext";
 // import data from "../../../server/data";
 
@@ -16,74 +17,32 @@ const HomeFeed = () => {
   const {
     homeFeed,
     currentUser,
-    setNewTweet,
-    newTweet,
-    inputLength,
-    setInputLength,
-    setHomeFeed,
   } = React.useContext(CurrentUserContext);
-console.log('homeFeed', homeFeed)
-  function handleSubmit(event) {
-    event.preventDefault();
 
-    console.log("homefeeddata", newTweet);
-
-    fetch("/api/tweet", {
-      method: "POST",
-      body: JSON.stringify({
-        status: newTweet,
-      }),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    }).then((state) => {
-      fetch("/api/me/home-feed")
-        .then((res) => res.json())
-        .then((feed) => {
-          setHomeFeed(feed);
-        })
-        .catch((err) => console.log(err));
-    });
-    // reset input field after new tweet
-    document.getElementById("newTweetId").reset();
-  }
 
   return (
     <Wrapper>
       <Sidebar></Sidebar>
       <div>
-        <h1>Home</h1>
-        <form onSubmit={handleSubmit} id="newTweetId">
-          <StyledUserImage
-            src={currentUser ? currentUser.avatarSrc : null}
-          ></StyledUserImage>
-          <input
-            id="tweet"
-            name="tweet"
-            type="text"
-            onChange={(ev) => {
-              setNewTweet(ev.target.value);
-              setInputLength(ev.target.value.length);
-            }}
-          ></input>
-          <span>{inputLength > 0 ? 280 - inputLength : 280}</span>
-          <button disabled={inputLength <= 0 || inputLength > 280}>Meow</button>
-        </form>
+        <HomeFeedForm></HomeFeedForm>
         <div>
           {homeFeed && currentUser
             ? homeFeed.tweetIds.map((tweet) => {
                 return (
-                  <a href={`/tweet/${tweet}`}>
+                  <StyledAnchor href={`/tweet/${tweet}`}>
                     <ProfileFeedContainer key={tweet}>
                       <HomeRetweet tweetId={tweet}></HomeRetweet>
-                      <HomeTweetUserImage tweetId={tweet}></HomeTweetUserImage>
-                      <HomeTweetAuthor tweetId={tweet}></HomeTweetAuthor>
-                      <HomeTweetBio tweetId={tweet}></HomeTweetBio>
-                      <HomeTweetContent tweetId={tweet}></HomeTweetContent>
-                      <HomeTweetButton tweetId={tweet}></HomeTweetButton>
+                      <HomeTweetContainer>
+                        <HomeTweetUserImage tweetId={tweet}></HomeTweetUserImage>
+                        <HomeTweetContentContainer>
+                          <HomeTweetAuthor tweetId={tweet}></HomeTweetAuthor>
+                          <HomeTweetBio tweetId={tweet}></HomeTweetBio>
+                          <HomeTweetContent tweetId={tweet}></HomeTweetContent>
+                          <HomeTweetButton tweetId={tweet}></HomeTweetButton>
+                        </HomeTweetContentContainer>
+                      </HomeTweetContainer>
                     </ProfileFeedContainer>
-                  </a>
+                  </StyledAnchor>
                 );
               })
             : <LoadingIcon></LoadingIcon>}
@@ -96,12 +55,21 @@ const Wrapper = styled.div`
   display: flex;
 `;
 const ProfileFeedContainer = styled.div`
-  border: 1px solid black;
   width: 1000px;
+  border: 1px solid lightgray;
+  border-top: none;
 `;
-const StyledUserImage = styled.img`
-  width: 50px;
-  border-radius: 50%;
-`;
+const HomeTweetContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+`
+const HomeTweetContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`
+const StyledAnchor = styled.a`
+  text-decoration: none;
+`
 
 export default HomeFeed;

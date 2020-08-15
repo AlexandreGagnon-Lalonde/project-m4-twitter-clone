@@ -1,19 +1,28 @@
 import React from "react";
+import styled from 'styled-components'
 
 import { CurrentUserContext } from "../CurrentUserContext";
 import { AiOutlineRetweet } from "react-icons/ai";
+import { COLORS } from '../constants'
 
-const HomeRetweer = (props) => {
+const HomeRetweet = (props) => {
   const { homeFeed, currentUser } = React.useContext(CurrentUserContext);
   if (homeFeed.tweetsById[props.tweetId].retweetFrom) {
     return (
-      <div>
+      <StyledDiv>
         <AiOutlineRetweet /> {currentUser.displayName} Remeowed
-      </div>
+      </StyledDiv>
     );
   } else {
     return null;
   }
 };
 
-export default HomeRetweer;
+const StyledDiv = styled.div`
+  font-size: 16px;
+  margin: 0 0 0 50px;
+  padding-top: 10px;
+  color: ${COLORS.black};
+`
+
+export default HomeRetweet;

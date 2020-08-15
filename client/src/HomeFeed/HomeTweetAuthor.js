@@ -1,6 +1,8 @@
 import React from "react";
+import styled from 'styled-components';
 
 import { CurrentUserContext } from "../CurrentUserContext";
+import { COLORS } from '../constants'
 
 const { format } = require("date-fns");
 
@@ -12,13 +14,24 @@ const HomeTweetAuthor = (props) => {
     "MMM do"
   );
   return (
-    <div>
-      <a href={`/${homeFeed.tweetsById[props.tweetId].author.handle}`}>
+    <StyledDiv>
+      <StyledAnchor href={`/${homeFeed.tweetsById[props.tweetId].author.handle}`}>
         {homeFeed.tweetsById[props.tweetId].author.displayName}
-      </a>{" "}
+      </StyledAnchor>{" "}
       @{homeFeed.tweetsById[props.tweetId].author.handle} · {retweetUserDate}
-    </div>
+    </StyledDiv>
   );
 };
+
+const StyledAnchor = styled.a`
+  font-weight: bold;
+  text-decoration: none;
+  color: ${COLORS.black};
+  font-size: 16px;
+`
+const StyledDiv = styled.div`
+  margin: 10px 1px 5px 0;
+  color: lightgray;
+`
 
 export default HomeTweetAuthor;

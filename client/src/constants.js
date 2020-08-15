@@ -5,6 +5,7 @@ export const COLORS = {
   loadingOrange: '#ffa600',
   loadingLime: '#b3ff00',
   loadingPink: '#ff00b3',
+  black: '#000',
 
   // Add more colors as needed!
 };

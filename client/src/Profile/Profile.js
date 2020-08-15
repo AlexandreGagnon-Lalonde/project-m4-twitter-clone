@@ -55,7 +55,6 @@ const Profile = (props) => {
     userHandle,
     following,
     followingLoaded,
-    setFollowingLoaded,
   ]);
 
   return (
