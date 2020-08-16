@@ -5,9 +5,7 @@ import styled from "styled-components";
 import { CurrentUserContext } from "../../CurrentUserContext";
 
 const BigTweetUserImage = (props) => {
-  const { homeFeed } = React.useContext(
-    CurrentUserContext
-  );
+  const { homeFeed } = React.useContext(CurrentUserContext);
   return (
     <StyledImage
       src={homeFeed.tweetsById[props.tweetId].author.avatarSrc}
@@ -18,5 +16,6 @@ const BigTweetUserImage = (props) => {
 const StyledImage = styled.img`
   width: 50px;
   border-radius: 50%;
+  margin: 10px;
 `;
 export default BigTweetUserImage;

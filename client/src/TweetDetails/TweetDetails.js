@@ -4,6 +4,7 @@ import { CurrentUserContext } from "../CurrentUserContext";
 import styled from "styled-components";
 import Sidebar from "../Sidebar/Sidebar";
 import BigTweet from "./BigTweet/BigTweet";
+import LoadingIcon from '../LoadingFiller/LoadingFiller'
 
 const TweetDetails = (props) => {
   const { homeFeed } = React.useContext(CurrentUserContext);
@@ -16,12 +17,12 @@ const TweetDetails = (props) => {
       {homeFeed ? (
         <BigTweet
           tweetId={tweetId}
-          tweetFeed={props.tweetFeed}
+          tweetFeed={homeFeed}
           tweetLike={props.tweetLike}
           setTweetLike={props.setTweetLike}
         ></BigTweet>
       ) : (
-        "loading"
+        <LoadingIcon></LoadingIcon>
       )}
     </Wrapper>
   );

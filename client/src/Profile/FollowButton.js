@@ -67,5 +67,8 @@ const StyledButton = styled.button`
   width: 100px;
   height: 30px;
   border-radius: 15px;
+  position: absolute;
+  bottom: -45px;
+  right: 15px;
 `;
 export default FollowButton;

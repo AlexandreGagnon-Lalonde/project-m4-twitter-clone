@@ -1,5 +1,5 @@
 import React from "react";
-
+import styled from "styled-components";
 import { CurrentUserContext } from "../../CurrentUserContext";
 
 const { format } = require("date-fns");
@@ -14,11 +14,16 @@ const BigTweetTime = (props) => {
     new Date(homeFeed.tweetsById[props.tweetId].timestamp),
     "LLL d y"
   );
-  console.log(new Date(homeFeed.tweetsById[props.tweetId].timestamp));
 
   return (
-    <div>{homeFeed ? `${time} · ${date} · Critter web app` : "Loading"}</div>
+    <StyledDiv>
+      {homeFeed ? `${time} · ${date} · Critter web app` : "Loading"}
+    </StyledDiv>
   );
 };
+
+const StyledDiv = styled.div`
+  margin: 10px;
+`;
 
 export default BigTweetTime;

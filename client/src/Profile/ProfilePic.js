@@ -11,10 +11,13 @@ const ProfilePic = (props) => {
 };
 
 const ProfileImgContainer = styled.img`
-  width: 20%;
+  width: 150px;
   border-radius: 50%;
-  border: 2px solid white;
-  margin-left: 10px;
+  border: 3px solid white;
+  margin-left: 15px;
+  position: absolute;
+  bottom: -75px;
+  z-index: 99;
 `;
 
 export default ProfilePic;

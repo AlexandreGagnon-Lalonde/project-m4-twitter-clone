@@ -19,7 +19,7 @@ const LoadingFiller = () => {
   const AnimatedIcon3 = animated(LoadingIcon3);
   const AnimatedIcon4 = animated(LoadingIcon4);
   return (
-    <div>
+    <StyledDiv>
       <AnimatedIcon1 style={props}>
         <AnimatedIcon2 style={props}>
           <AnimatedIcon3 style={props}>
@@ -27,10 +27,17 @@ const LoadingFiller = () => {
           </AnimatedIcon3>
         </AnimatedIcon2>
       </AnimatedIcon1>
-    </div>
+    </StyledDiv>
   );
 };
 
+const StyledDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+`
 const LoadingIcon1 = styled.div`
   width: 200px;
   height: 200px;

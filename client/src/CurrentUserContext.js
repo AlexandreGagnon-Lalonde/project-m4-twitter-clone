@@ -6,6 +6,7 @@ export const CurrentUserProvider = ({ children }) => {
   const [homeFeed, setHomeFeed] = React.useState(null);
   const [newTweet, setNewTweet] = React.useState(null);
   const [inputLength, setInputLength] = React.useState(null);
+  const [error, setError] = React.useState(false);
   // Fetch the user data from the API (/me/profile)
   // When the data is received, update currentUser.
   // Also, set `status` to `idle`

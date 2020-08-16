@@ -4,13 +4,11 @@ import styled from "styled-components";
 import Sidebar from "../Sidebar/Sidebar";
 import { CurrentUserContext } from "../CurrentUserContext";
 import MainProfileContent from "./MainProfileContent";
-import LoadingIcon from '../LoadingFiller/LoadingFiller'
+import LoadingIcon from "../LoadingFiller/LoadingFiller";
 
 const Profile = (props) => {
-  const { currentUser } = React.useContext(
-    CurrentUserContext
-  );
-
+  const { currentUser } = React.useContext(CurrentUserContext);
+  console.log("profile", props);
   const [profileUser, setProfileUser] = React.useState(null);
   const [profileLoaded, setProfileLoaded] = React.useState(false);
   const [tweetFeed, setTweetFeed] = React.useState(null);
@@ -20,25 +18,8 @@ const Profile = (props) => {
   let userHandle;
 
   React.useEffect(() => {
-    // grab user handle from the url
-    userHandle = window.location.pathname.substr(1);
-    if (!profileLoaded) {
-      fetch(`/api/${userHandle}/profile`)
-        .then((res) => res.json())
-        .then((profileData) => {
-          // set profile data
-          setProfileUser(profileData);
-          // confirm that profile is fetched
-          setProfileLoaded(true);
-          // fetch profile feed
-          fetch(`/api/${userHandle}/feed/`)
-            .then((res) => res.json())
-            .then((profileFeed) => {
-              setTweetFeed(profileFeed);
-            });
-        })
-        .catch((err) => console.log(err));
-    }
+    // // grab user handle from the url
+    // userHandle = window.location.pathname.substr(1);
     if (!followingLoaded) {
       // fetch following array of currentUser
       fetch(`/api/${currentUser.handle}/following`)
@@ -49,14 +30,25 @@ const Profile = (props) => {
         })
         .catch((err) => console.log(err));
     }
-  }, [
-    profileUser,
-    currentUser,
-    userHandle,
-    following,
-    followingLoaded,
-  ]);
-
+  }, [profileUser, currentUser, userHandle, following, followingLoaded]);
+  React.useEffect(() => {
+    // setProfileLoaded(false);
+    fetch(`/api/${props.profileId}/profile`)
+      .then((res) => res.json())
+      .then((profileData) => {
+        // set profile data
+        setProfileUser(profileData);
+        // confirm that profile is fetched
+        // setProfileLoaded(true);
+        // fetch profile feed
+        fetch(`/api/${props.profileId}/feed/`)
+          .then((res) => res.json())
+          .then((profileFeed) => {
+            setTweetFeed(profileFeed);
+          });
+      })
+      .catch((err) => console.log(err));
+  }, [props]);
   return (
     <Wrapper>
       <Sidebar></Sidebar>
@@ -68,6 +60,7 @@ const Profile = (props) => {
           setFollowingLoaded={setFollowingLoaded}
           tweetLike={props.tweetLike}
           setTweetLike={props.setTweetLike}
+          profileId={props.profileId}
         ></MainProfileContent>
       ) : (
         <LoadingIcon></LoadingIcon>

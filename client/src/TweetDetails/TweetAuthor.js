@@ -1,4 +1,9 @@
 import React from "react";
+import {
+  NavLink,
+  Link
+} from "react-router-dom";
+
 
 const { format } = require("date-fns");
 
@@ -14,9 +19,9 @@ const TweetAuthor = (props) => {
   if (props.tweetFeed.tweetsById[props.tweetId].retweetFrom) {
     return (
       <div>
-        <a href={`/${props.tweetFeed.tweetsById[props.tweetId].author.handle}`}>
+        <Link to={`/${props.tweetFeed.tweetsById[props.tweetId].author.handle}`}>
           {props.tweetFeed.tweetsById[props.tweetId].author.displayName}
-        </a>{" "}
+        </Link>{" "}
         @{props.tweetFeed.tweetsById[props.tweetId].author.handle} · Joined{" "}
         {retweetUserDate}
       </div>
@@ -24,9 +29,9 @@ const TweetAuthor = (props) => {
   } else {
     return (
       <div>
-        <a href={`/${props.profileUser.profile.handle}`}>
+        <Link to={`/${props.profileUser.profile.handle}`}>
           {props.profileUser.profile.displayName}
-        </a>{" "}
+        </Link>{" "}
         @{props.profileUser.profile.handle} · Joined {profileUserDate}
       </div>
     );

@@ -10,6 +10,7 @@ import BigTweetBio from "./BigTweetBio";
 import BigTweetContent from "./BigTweetContent";
 import BigTweetTime from "./BigTweetTime";
 import BigTweetButtons from "./BigTweetButtons";
+import LoadingIcon from '../../LoadingFiller/LoadingFiller'
 
 const BigTweet = (props) => {
   const { homeFeed } = React.useContext(
@@ -20,18 +21,22 @@ const BigTweet = (props) => {
   if (homeFeed) {
     return (
       <Wrapper>
-        <BigTweetUserImage
-          tweetId={props.tweetId}
-          tweetFeed={props.tweetFeed}
-        ></BigTweetUserImage>
-        <BigTweetAuthorDisplayName
-          tweetId={props.tweetId}
-          tweetFeed={props.tweetFeed}
-        ></BigTweetAuthorDisplayName>
-        <BigTweetAuthorHandle
-          tweetId={props.tweetId}
-          tweetFeed={props.tweetFeed}
-        ></BigTweetAuthorHandle>
+        <ImageContainer>
+          <BigTweetUserImage
+            tweetId={props.tweetId}
+            tweetFeed={props.tweetFeed}
+          ></BigTweetUserImage>
+          <AuthorContainer>
+            <BigTweetAuthorDisplayName
+              tweetId={props.tweetId}
+              tweetFeed={props.tweetFeed}
+            ></BigTweetAuthorDisplayName>
+            <BigTweetAuthorHandle
+              tweetId={props.tweetId}
+              tweetFeed={props.tweetFeed}
+            ></BigTweetAuthorHandle>
+          </AuthorContainer>
+        </ImageContainer>
         <BigTweetBio
           tweetId={props.tweetId}
           tweetFeed={props.tweetFeed}
@@ -53,12 +58,19 @@ const BigTweet = (props) => {
       </Wrapper>
     );
   } else {
-    return <div>Loading</div>;
+    return <LoadingIcon></LoadingIcon>;
   }
 };
 
 const Wrapper = styled.div`
   display: block;
+  border: 1px solid lightgray;
 `;
+const ImageContainer = styled.div`
+  display: flex;
+`
+const AuthorContainer = styled.div`
+  margin-top: 18px;
+`
 
 export default BigTweet;

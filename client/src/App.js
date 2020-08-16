@@ -34,9 +34,19 @@ const App = () => {
           <Route exact path="/tweet/:tweetId">
             <TweetDetails tweetLike={tweetLike} setTweetLike={setTweetLike} />
           </Route>
-          <Route path="/:profileId">
-            <Profile tweetLike={tweetLike} setTweetLike={setTweetLike} />
-          </Route>
+          <Route
+            path="/:profileId"
+            render={(routeProps) => {
+              console.log("routeP^rops", routeProps);
+              return (
+                <Profile
+                  tweetLike={tweetLike}
+                  setTweetLike={setTweetLike}
+                  profileId={routeProps.match.params.profileId}
+                />
+              );
+            }}
+          ></Route>
         </Switch>
       </Router>
     </BrowserRouter>

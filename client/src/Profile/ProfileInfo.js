@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 
 import { GoLocation } from "react-icons/go";
 import { MdDateRange } from "react-icons/md";
@@ -10,20 +11,87 @@ const ProfileInfo = (props) => {
   let year = date.getFullYear();
 
   return (
-    <div>
-      <p>{props.profileUser.profile.displayName}</p>
-      <p>@{props.profileUser.profile.handle}</p>
-      <p>{props.profileUser.profile.bio}</p>
-      <p>
-        <GoLocation /> {props.profileUser.profile.location}
-      </p>
-      <p>
-        <MdDateRange /> Joined {month} {year}
-      </p>
-      <p>{props.profileUser.profile.numFollowing} Following</p>
-      <p>{props.profileUser.profile.numFollowers} Followers</p>
-    </div>
+    <StyledContainer>
+      <StyledDisplayName>
+        {props.profileUser.profile.displayName}
+      </StyledDisplayName>
+      <StyledHandle>
+        @{props.profileUser.profile.handle}{" "}
+        <StyledSpan>
+          {props.profileUser.profile.isFollowingYou ? "Follows You" : null}
+        </StyledSpan>
+      </StyledHandle>
+      <StyledBio>{props.profileUser.profile.bio}</StyledBio>
+      <InfoContainer>
+        <StyledLocation>
+          <GoLocation /> {props.profileUser.profile.location}
+        </StyledLocation>
+        <StyledDate>
+          <MdDateRange /> Joined {month} {year}
+        </StyledDate>
+      </InfoContainer>
+      <FollowDiv>
+        <StyledFollowing>
+          <FollowSpan>{props.profileUser.profile.numFollowing}</FollowSpan>{" "}
+          Following
+        </StyledFollowing>
+        <StyledFollower>
+          <FollowSpan>{props.profileUser.profile.numFollowers}</FollowSpan>{" "}
+          Followers
+        </StyledFollower>
+      </FollowDiv>
+    </StyledContainer>
   );
 };
+
+const StyledContainer = styled.div`
+  margin-left: 10px;
+`;
+const StyledDisplayName = styled.p`
+  font-weight: bold;
+  margin-bottom: 5px;
+`;
+const StyledSpan = styled.span`
+  background-color: lightgray;
+  padding: 3px;
+  margin: 3px;
+  font-size: 12px;
+  color: black;
+  border-radius: 5px;
+`;
+const StyledHandle = styled.p`
+  font-size: 12px;
+  color: gray;
+  margin: 4px 5px 4px 0;
+`;
+const StyledBio = styled.p`
+  margin: 15px 0;
+`;
+const InfoContainer = styled.div`
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+`;
+const StyledLocation = styled.p`
+  color: gray;
+`;
+const StyledDate = styled.p`
+  color: gray;
+`;
+const StyledFollowing = styled.p`
+  color: gray;
+`;
+const StyledFollower = styled.p`
+  color: gray;
+`;
+const FollowSpan = styled.span`
+  color: black;
+`;
+const FollowDiv = styled.div`
+  display: flex;
+  margin: 10px 0;
+  width: 200px;
+  justify-content: space-between;
+`;
 
 export default ProfileInfo;
