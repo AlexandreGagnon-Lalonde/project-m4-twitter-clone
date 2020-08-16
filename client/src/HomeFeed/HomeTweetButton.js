@@ -48,8 +48,8 @@ const ButtonContainer = styled.div`
   justify-content: flex-start;
 `;
 const StyledButton = styled.button`
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
   flex: 1;
   text-align: left;
   font-size: 18px;
@@ -59,6 +59,11 @@ align-items: center;
   width: 40px;
   border: none;
   border-radius: 50%;
+
+  &:hover {
+    background-color: ${COLORS.loadingOrange};
+    opacity: 0.7;
+  }
 
 `;
 const ButtonContainerContainer = styled.div`

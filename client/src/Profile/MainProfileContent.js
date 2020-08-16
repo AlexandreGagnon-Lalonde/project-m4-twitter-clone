@@ -33,9 +33,7 @@ const MainProfileContent = (props) => {
 };
 const Wrapper = styled.div`
   display: flex;
-  flex: 1;
   flex-direction: column;
-  margin-right: 100px;
   border-right: 1px solid lightgray;
   border-left: 1px solid lightgray;
   width: 1000px;

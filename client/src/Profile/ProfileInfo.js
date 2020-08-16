@@ -17,9 +17,9 @@ const ProfileInfo = (props) => {
       </StyledDisplayName>
       <StyledHandle>
         @{props.profileUser.profile.handle}{" "}
-        <StyledSpan>
-          {props.profileUser.profile.isFollowingYou ? "Follows You" : null}
-        </StyledSpan>
+        {props.profileUser.profile.isFollowingYou ? (
+          <StyledSpan>Follows You</StyledSpan>
+        ) : null}
       </StyledHandle>
       <StyledBio>{props.profileUser.profile.bio}</StyledBio>
       <InfoContainer>

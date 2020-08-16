@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 import styled from "styled-components";
 
@@ -15,42 +16,46 @@ const ProfileFeed = (props) => {
       {props.tweetFeed
         ? props.tweetFeed.tweetIds.map((tweet) => {
             return (
-              <a href={`/tweet/${tweet}`}>
+              <StyledLink to={`/tweet/${tweet}`}>
                 <ProfileFeedContainer key={tweet}>
                   <Retweet
                     tweetId={tweet}
                     profileUser={props.profileUser}
                     tweetFeed={props.tweetFeed}
                   ></Retweet>
-                  <TweetUserImage
-                    tweetId={tweet}
-                    profileUser={props.profileUser}
-                    tweetFeed={props.tweetFeed}
-                  ></TweetUserImage>
-                  <TweetAuthor
-                    tweetId={tweet}
-                    profileUser={props.profileUser}
-                    tweetFeed={props.tweetFeed}
-                  ></TweetAuthor>
-                  <TweetBio
-                    tweetId={tweet}
-                    profileUser={props.profileUser}
-                    tweetFeed={props.tweetFeed}
-                  ></TweetBio>
-                  <TweetContent
-                    tweetId={tweet}
-                    profileUser={props.profileUser}
-                    tweetFeed={props.tweetFeed}
-                  ></TweetContent>
-                  <TweetButtons
-                    tweetId={tweet}
-                    profileUser={props.profileUser}
-                    tweetFeed={props.tweetFeed}
-                    tweetLike={props.tweetLike}
-                    setTweetLike={props.setTweetLike}
-                  ></TweetButtons>
+                  <ProfileTweetFeedContainer>
+                    <TweetUserImage
+                      tweetId={tweet}
+                      profileUser={props.profileUser}
+                      tweetFeed={props.tweetFeed}
+                    ></TweetUserImage>
+                    <ProfileFeedContainerContainer>
+                      <TweetAuthor
+                        tweetId={tweet}
+                        profileUser={props.profileUser}
+                        tweetFeed={props.tweetFeed}
+                      ></TweetAuthor>
+                      <TweetBio
+                        tweetId={tweet}
+                        profileUser={props.profileUser}
+                        tweetFeed={props.tweetFeed}
+                      ></TweetBio>
+                      <TweetContent
+                        tweetId={tweet}
+                        profileUser={props.profileUser}
+                        tweetFeed={props.tweetFeed}
+                      ></TweetContent>
+                      <TweetButtons
+                        tweetId={tweet}
+                        profileUser={props.profileUser}
+                        tweetFeed={props.tweetFeed}
+                        tweetLike={props.tweetLike}
+                        setTweetLike={props.setTweetLike}
+                      ></TweetButtons>
+                    </ProfileFeedContainerContainer>
+                  </ProfileTweetFeedContainer>
                 </ProfileFeedContainer>
-              </a>
+              </StyledLink>
             );
           })
         : "Loading"}
@@ -59,7 +64,21 @@ const ProfileFeed = (props) => {
 };
 
 const ProfileFeedContainer = styled.div`
-  border: 1px solid black;
+  width: 1000px;
+  border-bottom: 1px solid lightgray;
+`;
+const ProfileTweetFeedContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+`;
+const ProfileFeedContainerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+const StyledLink = styled(NavLink)`
+  text-decoration: none;
+  color: black;
 `;
 
 export default ProfileFeed;

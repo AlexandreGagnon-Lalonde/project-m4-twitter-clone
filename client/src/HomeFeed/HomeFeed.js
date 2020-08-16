@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+
 
 import Sidebar from "../Sidebar/Sidebar";
 import HomeRetweet from "./HomeRetweet";
@@ -25,7 +27,7 @@ const HomeFeed = () => {
           {homeFeed && currentUser ? (
             homeFeed.tweetIds.map((tweet) => {
               return (
-                <StyledAnchor href={`/tweet/${tweet}`}>
+                <StyledAnchor to={`/tweet/${tweet}`}>
                   <ProfileFeedContainer key={tweet}>
                     <HomeRetweet tweetId={tweet}></HomeRetweet>
                     <HomeTweetContainer>
@@ -66,7 +68,7 @@ const HomeTweetContentContainer = styled.div`
   flex-direction: column;
   width: 100%;
 `;
-const StyledAnchor = styled.a`
+const StyledAnchor = styled(NavLink)`
   text-decoration: none;
 `;
 

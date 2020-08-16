@@ -10,8 +10,9 @@ const Banner = (props) => {
 
 const ImgContainer = styled.img`
   display: block;
-  width: 100%;
+  width: 1000px;
   height: auto;
+  box-sizing: border-box;
 `;
 
 export default Banner;

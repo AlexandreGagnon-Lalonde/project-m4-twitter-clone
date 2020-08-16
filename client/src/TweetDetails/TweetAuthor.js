@@ -1,9 +1,7 @@
 import React from "react";
-import {
-  NavLink,
-  Link
-} from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+import { COLORS } from "../constants";
 
 const { format } = require("date-fns");
 
@@ -18,24 +16,37 @@ const TweetAuthor = (props) => {
   );
   if (props.tweetFeed.tweetsById[props.tweetId].retweetFrom) {
     return (
-      <div>
-        <Link to={`/${props.tweetFeed.tweetsById[props.tweetId].author.handle}`}>
+      <StyledDiv>
+        <StyledAnchor
+          to={`/${props.tweetFeed.tweetsById[props.tweetId].author.handle}`}
+        >
           {props.tweetFeed.tweetsById[props.tweetId].author.displayName}
-        </Link>{" "}
+        </StyledAnchor>{" "}
         @{props.tweetFeed.tweetsById[props.tweetId].author.handle} · Joined{" "}
         {retweetUserDate}
-      </div>
+      </StyledDiv>
     );
   } else {
     return (
-      <div>
-        <Link to={`/${props.profileUser.profile.handle}`}>
+      <StyledDiv>
+        <StyledAnchor to={`/${props.profileUser.profile.handle}`}>
           {props.profileUser.profile.displayName}
-        </Link>{" "}
+        </StyledAnchor>{" "}
         @{props.profileUser.profile.handle} · Joined {profileUserDate}
-      </div>
+      </StyledDiv>
     );
   }
 };
+
+const StyledAnchor = styled(NavLink)`
+  font-weight: bold;
+  text-decoration: none;
+  color: ${COLORS.black};
+  font-size: 16px;
+`;
+const StyledDiv = styled.div`
+  margin: 10px 1px 5px 0;
+  color: lightgray;
+`;
 
 export default TweetAuthor;
