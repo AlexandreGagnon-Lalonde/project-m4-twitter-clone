@@ -23,3 +23,14 @@
 - solved by lots of tweaks and adding currentUser to the react.useeffect end array
 
 - When the user doesn't follow another user there is an error on the bigTweet Page
+- Solved by asking a question to the TC and discover a new feature with react routes (match)
+  - https://reactrouter.com/web/api/Route/render-func
+
+- unable to correctly rerender the amount of likes next to all the buttons
+
+
+THINGS LEFT TODO :
+  - button animation
+  - routes for profile assets
+  - simplify mucho grande
+  - comments

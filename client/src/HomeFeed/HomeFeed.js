@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-
 import Sidebar from "../Sidebar/Sidebar";
 import HomeRetweet from "./HomeRetweet";
 import HomeTweetBio from "./HomeTweetBio";
@@ -15,7 +14,7 @@ import HomeFeedForm from "./HomeFeedForm";
 import { CurrentUserContext } from "../CurrentUserContext";
 // import data from "../../../server/data";
 
-const HomeFeed = () => {
+const HomeFeed = (props) => {
   const { homeFeed, currentUser } = React.useContext(CurrentUserContext);
 
   return (
@@ -36,7 +35,14 @@ const HomeFeed = () => {
                         <HomeTweetAuthor tweetId={tweet}></HomeTweetAuthor>
                         <HomeTweetBio tweetId={tweet}></HomeTweetBio>
                         <HomeTweetContent tweetId={tweet}></HomeTweetContent>
-                        <HomeTweetButton tweetId={tweet}></HomeTweetButton>
+                        <HomeTweetButton
+                          tweetId={tweet}
+                          tweetLike={props.tweetLike}
+                          setTweetLike={props.setTweetLike}
+                          retweeted={props.retweeted}
+                          setRetweeted={props.setRetweeted}
+                          homeFeed={homeFeed}
+                        ></HomeTweetButton>
                       </HomeTweetContentContainer>
                     </HomeTweetContainer>
                   </ProfileFeedContainer>

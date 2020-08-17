@@ -8,9 +8,8 @@ import LoadingIcon from "../LoadingFiller/LoadingFiller";
 
 const Profile = (props) => {
   const { currentUser } = React.useContext(CurrentUserContext);
-  console.log("profile", props);
+  
   const [profileUser, setProfileUser] = React.useState(null);
-  const [profileLoaded, setProfileLoaded] = React.useState(false);
   const [tweetFeed, setTweetFeed] = React.useState(null);
   const [following, setFollowing] = React.useState(null);
   const [followingLoaded, setFollowingLoaded] = React.useState(false);
@@ -60,6 +59,8 @@ const Profile = (props) => {
           setFollowingLoaded={setFollowingLoaded}
           tweetLike={props.tweetLike}
           setTweetLike={props.setTweetLike}
+          retweeted={props.retweeted}
+          setRetweeted={props.setRetweeted}
           profileId={props.profileId}
         ></MainProfileContent>
       ) : (

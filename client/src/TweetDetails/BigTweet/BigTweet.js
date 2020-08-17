@@ -54,7 +54,10 @@ const BigTweet = (props) => {
           tweetFeed={props.tweetFeed}
           tweetLike={props.tweetLike}
           setTweetLike={props.setTweetLike}
-        ></BigTweetButtons>
+          retweeted={props.retweeted}
+          setRetweeted={props.setRetweeted}
+
+    ></BigTweetButtons>
       </Wrapper>
     );
   } else {

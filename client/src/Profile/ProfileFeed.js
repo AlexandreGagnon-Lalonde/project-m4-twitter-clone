@@ -9,6 +9,7 @@ import TweetUserImage from "../TweetDetails/TweetUserImage";
 import TweetAuthor from "../TweetDetails/TweetAuthor";
 import TweetContent from "../TweetDetails/TweetContent";
 import TweetButtons from "../TweetDetails/TweetButtons";
+import LoadingIcon from '../LoadingFiller/LoadingFiller'
 
 const ProfileFeed = (props) => {
   return (
@@ -51,6 +52,8 @@ const ProfileFeed = (props) => {
                         tweetFeed={props.tweetFeed}
                         tweetLike={props.tweetLike}
                         setTweetLike={props.setTweetLike}
+                        retweeted={props.retweeted}
+                        setRetweeted={props.setRetweeted}
                       ></TweetButtons>
                     </ProfileFeedContainerContainer>
                   </ProfileTweetFeedContainer>
@@ -58,7 +61,7 @@ const ProfileFeed = (props) => {
               </StyledLink>
             );
           })
-        : "Loading"}
+        : <LoadingIcon></LoadingIcon>}
     </div>
   );
 };

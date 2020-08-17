@@ -27,6 +27,13 @@ const MainProfileContent = (props) => {
         tweetFeed={props.tweetFeed}
         tweetLike={props.tweetLike}
         setTweetLike={props.setTweetLike}
+        retweeted={props.retweeted}
+        setRetweeted={props.setRetweeted}
+        amountTweetLike={props.amountTweetLike}
+        setAmountTweetLike={props.setAmountTweetLike}
+        amountRetweeted={props.amountRetweeted}
+        setAmountRetweeted={props.setAmountRetweeted}
+
       ></ProfileFeed>
     </Wrapper>
   );

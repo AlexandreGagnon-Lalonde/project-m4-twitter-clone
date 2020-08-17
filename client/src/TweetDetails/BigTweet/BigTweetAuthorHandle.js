@@ -12,7 +12,7 @@ const BigTweetAuthorHandle = (props) => {
 };
 
 const StyledDiv = styled.div`
-  color: lightgray;
+  color: gray;
   margin-top: 2px;
 `
 export default BigTweetAuthorHandle;

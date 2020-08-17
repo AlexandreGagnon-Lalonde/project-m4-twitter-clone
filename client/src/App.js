@@ -16,6 +16,7 @@ import GlobalStyles from "./GlobalStyles";
 
 const App = () => {
   const [tweetLike, setTweetLike] = React.useState(false);
+  const [retweeted, setRetweeted] = React.useState(false);
 
   return (
     <BrowserRouter>
@@ -23,7 +24,12 @@ const App = () => {
       <Router>
         <Switch>
           <Route exact path="/">
-            <HomeFeed />
+            <HomeFeed
+              tweetLike={tweetLike}
+              setTweetLike={setTweetLike}
+              retweeted={retweeted}
+              setRetweeted={setRetweeted}
+            />
           </Route>
           <Route path="/notifications">
             <Notifications />
@@ -32,7 +38,12 @@ const App = () => {
             <Bookmarks />
           </Route>
           <Route exact path="/tweet/:tweetId">
-            <TweetDetails tweetLike={tweetLike} setTweetLike={setTweetLike} />
+            <TweetDetails
+              tweetLike={tweetLike}
+              setTweetLike={setTweetLike}
+              retweeted={retweeted}
+              setRetweeted={setRetweeted}
+            />
           </Route>
           <Route
             path="/:profileId"
@@ -42,6 +53,8 @@ const App = () => {
                 <Profile
                   tweetLike={tweetLike}
                   setTweetLike={setTweetLike}
+                  retweeted={retweeted}
+                  setRetweeted={setRetweeted}
                   profileId={routeProps.match.params.profileId}
                 />
               );

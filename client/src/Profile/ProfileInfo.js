@@ -24,7 +24,7 @@ const ProfileInfo = (props) => {
       <StyledBio>{props.profileUser.profile.bio}</StyledBio>
       <InfoContainer>
         <StyledLocation>
-          <GoLocation /> {props.profileUser.profile.location}
+          <GoLocation /> {props.profileUser.profile.location ? props.profileUser.profile.location : 'No Location'}
         </StyledLocation>
         <StyledDate>
           <MdDateRange /> Joined {month} {year}
@@ -69,7 +69,7 @@ const StyledBio = styled.p`
 `;
 const InfoContainer = styled.div`
   display: flex;
-  width: 300px;
+  width: 450px;
   justify-content: space-between;
 `;
 const StyledLocation = styled.p`

@@ -46,7 +46,7 @@ const StyledAnchor = styled(NavLink)`
 `;
 const StyledDiv = styled.div`
   margin: 10px 1px 5px 0;
-  color: lightgray;
+  color: gray;
 `;
 
 export default TweetAuthor;

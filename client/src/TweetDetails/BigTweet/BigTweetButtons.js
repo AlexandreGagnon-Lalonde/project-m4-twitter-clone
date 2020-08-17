@@ -6,11 +6,10 @@ import { FaRegCommentAlt } from "react-icons/fa";
 import { AiOutlineRetweet } from "react-icons/ai";
 import { FcLike } from "react-icons/fc";
 import { FiUpload } from "react-icons/fi";
-import { COLORS } from '../../constants';
+import { COLORS } from "../../constants";
 
 const BigTweetButtons = (props) => {
-  console.log('bigtweetbutton', props)
-  function handleClick(e) {
+  function handleLike(e) {
     e.stopPropagation();
     e.preventDefault();
     if (!props.tweetLike) {
@@ -41,6 +40,40 @@ const BigTweetButtons = (props) => {
       });
     }
   }
+  function handleRetweet(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    if (!props.retweeted) {
+      fetch(`/api/tweet/${props.tweetId}/retweet`, {
+        method: "PUT",
+        body: JSON.stringify({
+          retweet: true,
+        }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }).then((state) => {
+        props.setRetweeted(true);
+      });
+    } else {
+      fetch(`/api/tweet/${props.tweetId}/retweet`, {
+        method: "PUT",
+        body: JSON.stringify({
+          retweet: false,
+        }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }).then((state) => {
+        props.setRetweeted(false);
+      });
+    }
+  }
+  function handleClick() {
+    console.log('Button Clicked')
+  }
 
   return (
     <ButtonContainer>
@@ -50,19 +83,24 @@ const BigTweetButtons = (props) => {
         </StyledButton>
       </ButtonContainerContainer>
       <ButtonContainerContainer>
-        <StyledButton onClick={handleClick}>
+        <StyledButton onClick={handleRetweet}>
           <AiOutlineRetweet />
-          <span>
-          {props.tweetFeed.tweetsById[props.tweetId].numRetweets > 0
-            ? props.tweetFeed.tweetsById[props.tweetId].numRetweets
-            : null}
-        </span>
-        </StyledButton>
+          
+        </StyledButton><span>
+            {props.tweetFeed.tweetsById[props.tweetId].numRetweets > 0
+              ? props.tweetFeed.tweetsById[props.tweetId].numRetweets
+              : null}
+          </span>
       </ButtonContainerContainer>
       <ButtonContainerContainer>
-        <StyledButton onClick={handleClick}>
+        <StyledButton onClick={handleLike}>
           <FcLike />
-        </StyledButton>
+          
+        </StyledButton><span>
+            {props.tweetFeed.tweetsById[props.tweetId].numLikes > 0
+              ? props.tweetFeed.tweetsById[props.tweetId].numLikes
+              : null}
+          </span>
       </ButtonContainerContainer>
       <ButtonContainerContainer>
         <StyledButton onClick={handleClick}>
@@ -81,20 +119,20 @@ const ButtonContainer = styled.div`
   justify-content: flex-start;
 `;
 const StyledButton = styled.button`
-display: flex;
-align-items: center;
-  flex: 1;
+  display: flex;
+  align-items: center;
   text-align: left;
   font-size: 18px;
   height: 40px;
   padding-left: 10px;
-  background-color: ${COLORS.primary};
+  background-color: lightgray;
   width: 40px;
   border: none;
   border-radius: 50%;
-
 `;
 const ButtonContainerContainer = styled.div`
   width: 100%;
-`
+  display: flex;
+  align-items: center;
+`;
 export default BigTweetButtons;
