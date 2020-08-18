@@ -26,7 +26,7 @@ const HomeFeed = (props) => {
           {homeFeed && currentUser ? (
             homeFeed.tweetIds.map((tweet) => {
               return (
-                <StyledAnchor to={`/tweet/${tweet}`}>
+                <StyledAnchor to={`/tweet/${tweet}`} key={tweet}>
                   <ProfileFeedContainer key={tweet}>
                     <HomeRetweet tweetId={tweet}></HomeRetweet>
                     <HomeTweetContainer>

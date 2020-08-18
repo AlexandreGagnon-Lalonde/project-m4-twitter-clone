@@ -37,7 +37,7 @@ const StyledDiv = styled.div`
   justify-content: center;
   height: 100vh;
   width: 100%;
-`
+`;
 const LoadingIcon1 = styled.div`
   width: 200px;
   height: 200px;

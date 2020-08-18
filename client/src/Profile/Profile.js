@@ -5,53 +5,61 @@ import Sidebar from "../Sidebar/Sidebar";
 import { CurrentUserContext } from "../CurrentUserContext";
 import MainProfileContent from "./MainProfileContent";
 import LoadingIcon from "../LoadingFiller/LoadingFiller";
+import ErrorScreen from "../ErrorScreen/ErrorScreen";
 
 const Profile = (props) => {
   const { currentUser } = React.useContext(CurrentUserContext);
-  
+
   const [profileUser, setProfileUser] = React.useState(null);
   const [tweetFeed, setTweetFeed] = React.useState(null);
   const [following, setFollowing] = React.useState(null);
   const [followingLoaded, setFollowingLoaded] = React.useState(false);
-
-  let userHandle;
+  const [profileFeedError, setProfileFeedError] = React.useState(false);
 
   React.useEffect(() => {
-    // // grab user handle from the url
-    // userHandle = window.location.pathname.substr(1);
     if (!followingLoaded) {
-      // fetch following array of currentUser
       fetch(`/api/${currentUser.handle}/following`)
         .then((res) => res.json())
         .then((data) => {
           setFollowing(data);
           setFollowingLoaded(true);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          setProfileFeedError(true);
+        });
     }
-  }, [profileUser, currentUser, userHandle, following, followingLoaded]);
+  }, [profileUser, currentUser, following, followingLoaded]);
   React.useEffect(() => {
-    // setProfileLoaded(false);
-    fetch(`/api/${props.profileId}/profile`)
-      .then((res) => res.json())
-      .then((profileData) => {
-        // set profile data
-        setProfileUser(profileData);
-        // confirm that profile is fetched
-        // setProfileLoaded(true);
-        // fetch profile feed
-        fetch(`/api/${props.profileId}/feed/`)
-          .then((res) => res.json())
-          .then((profileFeed) => {
-            setTweetFeed(profileFeed);
-          });
-      })
-      .catch((err) => console.log(err));
+    if (props.profileId) {
+      fetch(`/api/${props.profileId}/profile`)
+        .then((res) => res.json())
+        .then((profileData) => {
+          // set profile data
+          setProfileUser(profileData);
+          // fetch profile feed
+          fetch(`/api/${props.profileId}/feed/`)
+            .then((res) => res.json())
+            .then((profileFeed) => {
+              setTweetFeed(profileFeed);
+            })
+            .catch((err) => {
+              console.log(err);
+              setProfileFeedError(true);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+          setProfileFeedError(true);
+        });
+    }
   }, [props]);
   return (
     <Wrapper>
       <Sidebar></Sidebar>
-      {profileUser && currentUser && following ? (
+      {profileFeedError ? (
+        <ErrorScreen></ErrorScreen>
+      ) : profileUser && currentUser && following ? (
         <MainProfileContent
           profileUser={profileUser}
           tweetFeed={tweetFeed}

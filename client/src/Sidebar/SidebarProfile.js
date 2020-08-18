@@ -2,9 +2,7 @@ import React from "react";
 
 import { RiUser3Line } from "react-icons/ri";
 import styled from "styled-components";
-import {
-  NavLink,
-} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { COLORS } from "../constants";
 import { CurrentUserContext } from "../CurrentUserContext";
 

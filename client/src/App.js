@@ -11,7 +11,7 @@ import Notifications from "./Notifications/Notifications";
 import Bookmarks from "./Bookmarks/Bookmarks";
 import TweetDetails from "./TweetDetails/TweetDetails";
 import Profile from "./Profile/Profile";
-
+import ErrorScreen from "./ErrorScreen/ErrorScreen";
 import GlobalStyles from "./GlobalStyles";
 
 const App = () => {
@@ -48,7 +48,6 @@ const App = () => {
           <Route
             path="/:profileId"
             render={(routeProps) => {
-              console.log("routeP^rops", routeProps);
               return (
                 <Profile
                   tweetLike={tweetLike}
@@ -60,6 +59,9 @@ const App = () => {
               );
             }}
           ></Route>
+          <Route exact path="/404">
+            <ErrorScreen></ErrorScreen>
+          </Route>
         </Switch>
       </Router>
     </BrowserRouter>

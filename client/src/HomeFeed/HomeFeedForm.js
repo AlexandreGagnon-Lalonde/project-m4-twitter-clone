@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { CurrentUserContext } from "../CurrentUserContext";
 import { COLORS } from "../constants";
+import ErrorScreen from "../ErrorScreen/ErrorScreen";
 
 const HomeFeedForm = () => {
   const {
@@ -13,6 +14,8 @@ const HomeFeedForm = () => {
     setInputLength,
     setHomeFeed,
   } = React.useContext(CurrentUserContext);
+
+  const [formFeedError, setFormFeedError] = React.useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -32,37 +35,48 @@ const HomeFeedForm = () => {
         .then((feed) => {
           setHomeFeed(feed);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          setFormFeedError(true);
+        });
     });
     // reset input field after new tweet
     document.getElementById("newTweetId").reset();
   }
 
   return (
-    <div>
-      <StyledHeader>Home</StyledHeader>
-      <FormContainer>
-        <StyledUserImage
-          src={currentUser ? currentUser.avatarSrc : null}
-        ></StyledUserImage>
-        <StyledForm onSubmit={handleSubmit} id="newTweetId">
-          <StyledInput
-            id="tweet"
-            name="tweet"
-            type="textarea"
-            onChange={(ev) => {
-              setNewTweet(ev.target.value);
-              setInputLength(ev.target.value.length);
-            }}
-            placeholder="What's happening?"
-          ></StyledInput>
-          <StyledSpan>{inputLength > 0 ? 280 - inputLength : 280}</StyledSpan>
-          <StyledButton disabled={inputLength <= 0 || inputLength > 280}>
-            Meow
-          </StyledButton>
-        </StyledForm>
-      </FormContainer>
-    </div>
+    <>
+      {formFeedError ? (
+        <ErrorScreen></ErrorScreen>
+      ) : (
+        <div>
+          <StyledHeader>Home</StyledHeader>
+          <FormContainer>
+            <StyledUserImage
+              src={currentUser ? currentUser.avatarSrc : null}
+            ></StyledUserImage>
+            <StyledForm onSubmit={handleSubmit} id="newTweetId">
+              <StyledInput
+                id="tweet"
+                name="tweet"
+                type="textarea"
+                onChange={(ev) => {
+                  setNewTweet(ev.target.value);
+                  setInputLength(ev.target.value.length);
+                }}
+                placeholder="What's happening?"
+              ></StyledInput>
+              <StyledSpan>
+                {inputLength > 0 ? 280 - inputLength : 280}
+              </StyledSpan>
+              <StyledButton disabled={inputLength <= 0 || inputLength > 280}>
+                Meow
+              </StyledButton>
+            </StyledForm>
+          </FormContainer>
+        </div>
+      )}
+    </>
   );
 };
 

@@ -28,9 +28,15 @@
 
 - unable to correctly rerender the amount of likes next to all the buttons
 
+- sometimes the like button works, sometimes I have to click it twice to make it work
+
+- there's probably a whole lot of useless fetch in my 
 
 THINGS LEFT TODO :
   - button animation
+  - correctly redirect the user to an error page if server sends us a 500 response
+  - correctly rerender the number of likes and retweets next to the button
+    - now we need to refresh the page for that number to refresh
   - routes for profile assets
   - simplify mucho grande
   - comments

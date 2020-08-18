@@ -1,8 +1,8 @@
 import React from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 import { CurrentUserContext } from "../CurrentUserContext";
-import { COLORS } from '../constants'
+import { COLORS } from "../constants";
 
 const HomeTweetBio = (props) => {
   const { homeFeed } = React.useContext(CurrentUserContext);
@@ -16,6 +16,6 @@ const HomeTweetBio = (props) => {
 const StyledDiv = styled.div`
   margin: 5px 1px;
   color: ${COLORS.black};
-`
+`;
 
 export default HomeTweetBio;

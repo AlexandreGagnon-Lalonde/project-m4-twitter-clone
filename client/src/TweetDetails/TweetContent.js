@@ -5,7 +5,10 @@ const TweetContent = (props) => {
   return (
     <StyledDiv>
       {props.tweetFeed.tweetsById[props.tweetId].media.length !== 0 ? (
-        <StyledImage src={props.tweetFeed.tweetsById[props.tweetId].media[0].url} alt='photoshoped military cat'></StyledImage>
+        <StyledImage
+          src={props.tweetFeed.tweetsById[props.tweetId].media[0].url}
+          alt="photoshoped military cat"
+        ></StyledImage>
       ) : null}
     </StyledDiv>
   );

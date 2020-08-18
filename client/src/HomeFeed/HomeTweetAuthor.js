@@ -7,8 +7,8 @@ import { COLORS } from "../constants";
 const { format } = require("date-fns");
 
 const HomeTweetAuthor = (props) => {
-  const { homeFeed, currentUser } = React.useContext(CurrentUserContext);
-  console.log(currentUser.joined);
+  const { homeFeed } = React.useContext(CurrentUserContext);
+
   let retweetUserDate = format(
     new Date(homeFeed.tweetsById[props.tweetId].author.joined),
     "MMM do"

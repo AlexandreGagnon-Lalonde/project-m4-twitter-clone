@@ -36,6 +36,7 @@ router.get('/api/:handle/profile', (req, res) => {
 });
 
 router.get('/api/:handle/following', (req, res) => {
+  console.log('server',req.params.handle)
   const user = getUser(req.params.handle);
   const following = user.followingIds.map(getUserProfile);
 

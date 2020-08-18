@@ -2,9 +2,7 @@ import React from "react";
 
 import { BsBell } from "react-icons/bs";
 import styled from "styled-components";
-import {
-  NavLink,
-} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { COLORS } from "../constants";
 
 const SidebarNotifications = () => {

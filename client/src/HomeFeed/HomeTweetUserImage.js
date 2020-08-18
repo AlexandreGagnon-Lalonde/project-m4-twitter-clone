@@ -8,7 +8,7 @@ const HomeTweetUserImage = (props) => {
   const { homeFeed } = React.useContext(CurrentUserContext);
 
   const authorAvatarSrc = homeFeed.tweetsById[props.tweetId].author.avatarSrc;
-  
+
   return <StyledImage src={authorAvatarSrc}></StyledImage>;
 };
 

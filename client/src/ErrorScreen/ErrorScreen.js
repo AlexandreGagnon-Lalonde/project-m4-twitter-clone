@@ -1,18 +1,33 @@
-import React from 'react';
+import React from "react";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { CurrentUserContext } from "../CurrentUserContext";
-import { u1F4A3 as bomb } from 'react-icons-kit/noto_emoji_regular/u1F4A3';
+import { FaBomb } from "react-icons/fa";
 
-const ErrorScreen = (props) => {
-  const { homeFeed, currentUser } = React.useContext(CurrentUserContext);
-  
-  return <div>
-      <div>{bomb}</div>
-      <div>An unknown erro hsa occured</div>
-      <div>Please try refreshing the page, or contact support if hte problem persists.</div>
-    </div>
-}
+const ErrorScreen = () => {
 
-export default ErrorScreen
+  return (
+    <StyledDiv>
+      <FaBomb size={100} />
+      <StyledP>An unknown error has occured</StyledP>
+      <StyledP>
+        Please try refreshing the page, or contact support if the problem persists.
+      </StyledP>
+    </StyledDiv>
+  );
+};
+
+const StyledDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+`;
+const StyledP = styled.p`
+  margin: 15px;
+  font-weight: bold;
+  font-size: 20px;
+`;
+export default ErrorScreen;

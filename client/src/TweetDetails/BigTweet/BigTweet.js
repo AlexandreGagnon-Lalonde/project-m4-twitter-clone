@@ -10,14 +10,11 @@ import BigTweetBio from "./BigTweetBio";
 import BigTweetContent from "./BigTweetContent";
 import BigTweetTime from "./BigTweetTime";
 import BigTweetButtons from "./BigTweetButtons";
-import LoadingIcon from '../../LoadingFiller/LoadingFiller'
+import LoadingIcon from "../../LoadingFiller/LoadingFiller";
 
 const BigTweet = (props) => {
-  const { homeFeed } = React.useContext(
-    CurrentUserContext
-  );
+  const { homeFeed } = React.useContext(CurrentUserContext);
 
-  console.log("bigtweet", props);
   if (homeFeed) {
     return (
       <Wrapper>
@@ -56,8 +53,7 @@ const BigTweet = (props) => {
           setTweetLike={props.setTweetLike}
           retweeted={props.retweeted}
           setRetweeted={props.setRetweeted}
-
-    ></BigTweetButtons>
+        ></BigTweetButtons>
       </Wrapper>
     );
   } else {
@@ -71,9 +67,9 @@ const Wrapper = styled.div`
 `;
 const ImageContainer = styled.div`
   display: flex;
-`
+`;
 const AuthorContainer = styled.div`
   margin-top: 18px;
-`
+`;
 
 export default BigTweet;
